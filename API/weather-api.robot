@@ -24,4 +24,4 @@ Get Current Temprature
 *** Test Cases ***
 Get Current Temprature for Blacktown based on Postcode                          2148    ${NONE}    ${NONE}    ${NONE}    Blacktown
 Get Current Temprature for Blacktown based on Postcode and Country              2000    ${NONE}    ${NONE}    AU    Milsons Point
-Get Current Temprature for Sydney based on Lat and Long                         ${NONE}    33.8688    151.2093    ${NONE}    Sydney
+Get Current Temprature for Sydney based on Lat and Long                         ${NONE}    -33.86785    151.20732    ${NONE}    Sydney
