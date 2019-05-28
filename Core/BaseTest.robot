@@ -7,6 +7,7 @@ Base Web Test Setup
     [Arguments]    ${ENVIRONMENT_BROWSERTYPE}
 
     open browser    about:    browser=${ENVIRONMENT_BROWSERTYPE}
+    maximize browser window
     ${originalImplicitWait} =    set selenium implicit wait    5 seconds
     set test variable    ${originalImplicitWait}
     delete all cookies
