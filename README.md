@@ -54,3 +54,14 @@ This will execute all tests in a file.
 How to use the new 'Robot-single test execution' external tool
 Open the robot file that contains the tests you want to execute.
 Right click and select 'External Tools' -> 'Robot-test execution'
+
+Defects found in the given PHPTravel Website are as follows:
+
+1. No matter what city user slects, it shows up same set of hotels
+2. Bookings are not displayed under account profile if we try to book more than 3 bookings
+3. Under Refine dates section after searching for rooms, it displays nights with harded coded value as 1 even if we are trying to book for more then 1 night.
+4. Under Check Availability section after searching for rooms, it displays all booked out but still lets you proceed with booking any dates.
+
+Defects found in the given WeatherAPI are as follows:
+
+1. When searching on Postcode, if country is not selected, it shows incorrect data as different countries have different post code formats.
