@@ -1,22 +1,9 @@
 *** Settings ***
-Library    Collections
-Library    XML
 Library    RequestsLibrary
-Library    String
-Library    APILib.py
-Library    ExtendedSudsLibrary.py
-Library    xmltodict
-Library    OperatingSystem
-Library    Core/Libraries/CommonUtilities.py
-Library    Core/Libraries/JSONHelper.py
-Library    Core/Libraries/RequestsKeywordsExtentions.py
 
 *** Variables ***
 ${json}    None
-${tRespDict}    None
-${PROXIES}    None
 ${SESSION}    APITEST
-${ISWSDL}    ${False}
 
 *** Keywords ***
 ##################################################### Create Session ##################################################

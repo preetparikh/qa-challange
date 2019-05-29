@@ -1,0 +1,577 @@
+==============================================================================
+20190529 12:22:28.026 - INFO - + START SUITE: PHPTravel [ ]
+==============================================================================
+20190529 12:22:28.027 - INFO - +- START TEST: TC1: Verify user can book a Hotel/Flight/Tours on PHP Travel [ ]
+------------------------------------------------------------------------------
+20190529 12:22:28.028 - INFO - +-- START SETUP: BaseTest.Base Web Test Setup [ Chrome ]
+20190529 12:22:28.028 - INFO - +--- START KW: SeleniumLibrary.Open Browser [ about: | browser=${ENVIRONMENT_BROWSERTYPE} ]
+20190529 12:22:28.029 - INFO - Opening browser 'Chrome' to base url 'about:'.
+20190529 12:22:28.679 - DEBUG - POST http://127.0.0.1:57414/session {"capabilities": {"alwaysMatch": {"goog:chromeOptions": {"args": [], "extensions": []}, "browserName": "chrome", "platformName": "any"}, "firstMatch": [{}]}, "desiredCapabilities": {"goog:chromeOptions": {"args": [], "extensions": []}, "platform": "ANY", "browserName": "chrome", "version": ""}}
+20190529 12:22:28.679 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:57414
+20190529 12:22:30.959 - DEBUG - http://127.0.0.1:57414 "POST /session HTTP/1.1" 200 1027
+20190529 12:22:30.960 - DEBUG - Finished Request
+20190529 12:22:30.960 - DEBUG - POST http://127.0.0.1:57414/session/ca0302997f2c0f0ae030809a33ac6ed6/timeouts/async_script {"sessionId": "ca0302997f2c0f0ae030809a33ac6ed6", "ms": 5000.0}
+20190529 12:22:30.961 - DEBUG - http://127.0.0.1:57414 "POST /session/ca0302997f2c0f0ae030809a33ac6ed6/timeouts/async_script HTTP/1.1" 200 72
+20190529 12:22:30.961 - DEBUG - Finished Request
+20190529 12:22:30.962 - DEBUG - POST http://127.0.0.1:57414/session/ca0302997f2c0f0ae030809a33ac6ed6/timeouts/implicit_wait {"sessionId": "ca0302997f2c0f0ae030809a33ac6ed6", "ms": 0.0}
+20190529 12:22:30.962 - DEBUG - http://127.0.0.1:57414 "POST /session/ca0302997f2c0f0ae030809a33ac6ed6/timeouts/implicit_wait HTTP/1.1" 200 72
+20190529 12:22:30.963 - DEBUG - Finished Request
+20190529 12:22:30.963 - DEBUG - POST http://127.0.0.1:57414/session/ca0302997f2c0f0ae030809a33ac6ed6/url {"url": "about:", "sessionId": "ca0302997f2c0f0ae030809a33ac6ed6"}
+20190529 12:22:31.189 - DEBUG - http://127.0.0.1:57414 "POST /session/ca0302997f2c0f0ae030809a33ac6ed6/url HTTP/1.1" 200 72
+20190529 12:22:31.190 - DEBUG - Finished Request
+20190529 12:22:31.190 - DEBUG - Opened browser with session id ca0302997f2c0f0ae030809a33ac6ed6.
+20190529 12:22:31.190 - INFO - +--- END KW: SeleniumLibrary.Open Browser (3162)
+20190529 12:22:31.190 - INFO - +--- START KW: SeleniumLibrary.Maximize Browser Window [ ]
+20190529 12:22:31.191 - DEBUG - POST http://127.0.0.1:57414/session/ca0302997f2c0f0ae030809a33ac6ed6/window/current/maximize {"windowHandle": "current", "sessionId": "ca0302997f2c0f0ae030809a33ac6ed6"}
+20190529 12:22:32.319 - DEBUG - http://127.0.0.1:57414 "POST /session/ca0302997f2c0f0ae030809a33ac6ed6/window/current/maximize HTTP/1.1" 200 109
+20190529 12:22:32.320 - DEBUG - Finished Request
+20190529 12:22:32.320 - INFO - +--- END KW: SeleniumLibrary.Maximize Browser Window (1130)
+20190529 12:22:32.321 - INFO - +--- START KW: SeleniumLibrary.Set Selenium Implicit Wait [ 5 seconds ]
+20190529 12:22:32.321 - DEBUG - POST http://127.0.0.1:57414/session/ca0302997f2c0f0ae030809a33ac6ed6/timeouts/implicit_wait {"sessionId": "ca0302997f2c0f0ae030809a33ac6ed6", "ms": 5000.0}
+20190529 12:22:32.323 - DEBUG - http://127.0.0.1:57414 "POST /session/ca0302997f2c0f0ae030809a33ac6ed6/timeouts/implicit_wait HTTP/1.1" 200 72
+20190529 12:22:32.323 - DEBUG - Finished Request
+20190529 12:22:32.323 - INFO - ${originalImplicitWait} = 0 seconds
+20190529 12:22:32.324 - INFO - +--- END KW: SeleniumLibrary.Set Selenium Implicit Wait (2)
+20190529 12:22:32.324 - INFO - +--- START KW: BuiltIn.Set Test Variable [ ${originalImplicitWait} ]
+20190529 12:22:32.324 - INFO - ${originalImplicitWait} = 0 seconds
+20190529 12:22:32.324 - INFO - +--- END KW: BuiltIn.Set Test Variable (0)
+20190529 12:22:32.324 - INFO - +--- START KW: SeleniumLibrary.Delete All Cookies [ ]
+20190529 12:22:32.325 - DEBUG - DELETE http://127.0.0.1:57414/session/ca0302997f2c0f0ae030809a33ac6ed6/cookie {"sessionId": "ca0302997f2c0f0ae030809a33ac6ed6"}
+20190529 12:22:32.330 - DEBUG - http://127.0.0.1:57414 "DELETE /session/ca0302997f2c0f0ae030809a33ac6ed6/cookie HTTP/1.1" 200 72
+20190529 12:22:32.331 - DEBUG - Finished Request
+20190529 12:22:32.331 - INFO - +--- END KW: SeleniumLibrary.Delete All Cookies (7)
+20190529 12:22:32.331 - INFO - +-- END SETUP: BaseTest.Base Web Test Setup (4303)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+20190529 12:22:32.331 - INFO - +-- START KW: BddKeywords.Given I am on PHP Travel Website [ ]
+20190529 12:22:32.332 - INFO - +--- START KW: SeleniumLibrary.Go To [ ${ENVIRONMENT_PHPTRAVEL_HOST} ]
+20190529 12:22:32.332 - INFO - Opening url 'https://www.phptravels.net/'
+20190529 12:22:32.332 - DEBUG - POST http://127.0.0.1:57414/session/ca0302997f2c0f0ae030809a33ac6ed6/url {"url": "https://www.phptravels.net/", "sessionId": "ca0302997f2c0f0ae030809a33ac6ed6"}
+20190529 12:22:39.550 - DEBUG - http://127.0.0.1:57414 "POST /session/ca0302997f2c0f0ae030809a33ac6ed6/url HTTP/1.1" 200 72
+20190529 12:22:39.551 - DEBUG - Finished Request
+20190529 12:22:39.551 - INFO - +--- END KW: SeleniumLibrary.Go To (7219)
+20190529 12:22:39.551 - INFO - +--- START KW: SeleniumLibrary.Wait Until Page Contains Element [ ${Home_Logo} ]
+20190529 12:22:39.553 - DEBUG - POST http://127.0.0.1:57414/session/ca0302997f2c0f0ae030809a33ac6ed6/elements {"using": "xpath", "sessionId": "ca0302997f2c0f0ae030809a33ac6ed6", "value": "//img[contains(@alt, 'PHPTRAVELS | Travel Technology Partner')]"}
+20190529 12:22:39.580 - DEBUG - http://127.0.0.1:57414 "POST /session/ca0302997f2c0f0ae030809a33ac6ed6/elements HTTP/1.1" 200 105
+20190529 12:22:39.581 - DEBUG - Finished Request
+20190529 12:22:39.581 - INFO - +--- END KW: SeleniumLibrary.Wait Until Page Contains Element (30)
+20190529 12:22:39.581 - INFO - +-- END KW: BddKeywords.Given I am on PHP Travel Website (7250)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+20190529 12:22:39.582 - INFO - +-- START KW: HomePage.When HomePage.I verify tabs available for booking [ ]
+20190529 12:22:39.582 - INFO - +--- START KW: SeleniumLibrary.Page Should Contain Element [ ${Home_Flights_Tab} ]
+20190529 12:22:39.582 - DEBUG - POST http://127.0.0.1:57414/session/ca0302997f2c0f0ae030809a33ac6ed6/elements {"using": "xpath", "sessionId": "ca0302997f2c0f0ae030809a33ac6ed6", "value": "//a[@title='Flights']"}
+20190529 12:22:39.600 - DEBUG - http://127.0.0.1:57414 "POST /session/ca0302997f2c0f0ae030809a33ac6ed6/elements HTTP/1.1" 200 105
+20190529 12:22:39.600 - DEBUG - Finished Request
+20190529 12:22:39.600 - INFO - Current page contains element 'xpath=//a[@title='Flights']'.
+20190529 12:22:39.601 - INFO - +--- END KW: SeleniumLibrary.Page Should Contain Element (19)
+20190529 12:22:39.601 - INFO - +--- START KW: SeleniumLibrary.Page Should Contain Element [ ${Home_Hotels_Tab} ]
+20190529 12:22:39.601 - DEBUG - POST http://127.0.0.1:57414/session/ca0302997f2c0f0ae030809a33ac6ed6/elements {"using": "xpath", "sessionId": "ca0302997f2c0f0ae030809a33ac6ed6", "value": "//a[@title='Hotels']"}
+20190529 12:22:39.615 - DEBUG - http://127.0.0.1:57414 "POST /session/ca0302997f2c0f0ae030809a33ac6ed6/elements HTTP/1.1" 200 105
+20190529 12:22:39.616 - DEBUG - Finished Request
+20190529 12:22:39.616 - INFO - Current page contains element 'xpath=//a[@title='Hotels']'.
+20190529 12:22:39.616 - INFO - +--- END KW: SeleniumLibrary.Page Should Contain Element (15)
+20190529 12:22:39.616 - INFO - +--- START KW: SeleniumLibrary.Page Should Contain Element [ ${Home_Tours_Tab} ]
+20190529 12:22:39.617 - DEBUG - POST http://127.0.0.1:57414/session/ca0302997f2c0f0ae030809a33ac6ed6/elements {"using": "xpath", "sessionId": "ca0302997f2c0f0ae030809a33ac6ed6", "value": "//a[@title='Tours']"}
+20190529 12:22:39.631 - DEBUG - http://127.0.0.1:57414 "POST /session/ca0302997f2c0f0ae030809a33ac6ed6/elements HTTP/1.1" 200 105
+20190529 12:22:39.632 - DEBUG - Finished Request
+20190529 12:22:39.632 - INFO - Current page contains element 'xpath=//a[@title='Tours']'.
+20190529 12:22:39.632 - INFO - +--- END KW: SeleniumLibrary.Page Should Contain Element (16)
+20190529 12:22:39.632 - INFO - +-- END KW: HomePage.When HomePage.I verify tabs available for booking (50)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+20190529 12:22:39.632 - INFO - +-- START KW: BddKeywords.Then I should be able to navigate to Hotels/Flights/Tours tabs [ ]
+20190529 12:22:39.633 - INFO - +--- START KW: HomePage.HomePage.Navigate to Hotels Tab [ ]
+20190529 12:22:39.633 - INFO - +---- START KW: SeleniumLibrary.Click Element [ ${Home_${tabname}_Tab} ]
+20190529 12:22:39.633 - INFO - Clicking element 'xpath=//a[@title='Hotels']'.
+20190529 12:22:39.633 - DEBUG - POST http://127.0.0.1:57414/session/ca0302997f2c0f0ae030809a33ac6ed6/elements {"using": "xpath", "sessionId": "ca0302997f2c0f0ae030809a33ac6ed6", "value": "//a[@title='Hotels']"}
+20190529 12:22:39.646 - DEBUG - http://127.0.0.1:57414 "POST /session/ca0302997f2c0f0ae030809a33ac6ed6/elements HTTP/1.1" 200 105
+20190529 12:22:39.646 - DEBUG - Finished Request
+20190529 12:22:39.647 - DEBUG - POST http://127.0.0.1:57414/session/ca0302997f2c0f0ae030809a33ac6ed6/element/0.09412346317223674-3/click {"sessionId": "ca0302997f2c0f0ae030809a33ac6ed6", "id": "0.09412346317223674-3"}
+20190529 12:22:39.710 - DEBUG - http://127.0.0.1:57414 "POST /session/ca0302997f2c0f0ae030809a33ac6ed6/element/0.09412346317223674-3/click HTTP/1.1" 200 72
+20190529 12:22:39.711 - DEBUG - Finished Request
+20190529 12:22:39.711 - INFO - +---- END KW: SeleniumLibrary.Click Element (78)
+20190529 12:22:39.711 - INFO - +---- START KW: SeleniumLibrary.Wait Until Page Contains Element [ xpath=//li[contains(@class, 'active')]//span[normalize-space()="${tabname}"] ]
+20190529 12:22:39.712 - DEBUG - POST http://127.0.0.1:57414/session/ca0302997f2c0f0ae030809a33ac6ed6/elements {"using": "xpath", "sessionId": "ca0302997f2c0f0ae030809a33ac6ed6", "value": "//li[contains(@class, 'active')]//span[normalize-space()=\"Hotels\"]"}
+20190529 12:22:39.738 - DEBUG - http://127.0.0.1:57414 "POST /session/ca0302997f2c0f0ae030809a33ac6ed6/elements HTTP/1.1" 200 105
+20190529 12:22:39.738 - DEBUG - Finished Request
+20190529 12:22:39.738 - INFO - +---- END KW: SeleniumLibrary.Wait Until Page Contains Element (27)
+20190529 12:22:39.739 - INFO - +---- START KW: SeleniumLibrary.Page Should Contain Element [ xpath=//li[contains(@class, 'active')]//span[normalize-space()="${tabname}"] ]
+20190529 12:22:39.739 - DEBUG - POST http://127.0.0.1:57414/session/ca0302997f2c0f0ae030809a33ac6ed6/elements {"using": "xpath", "sessionId": "ca0302997f2c0f0ae030809a33ac6ed6", "value": "//li[contains(@class, 'active')]//span[normalize-space()=\"Hotels\"]"}
+20190529 12:22:39.750 - DEBUG - http://127.0.0.1:57414 "POST /session/ca0302997f2c0f0ae030809a33ac6ed6/elements HTTP/1.1" 200 105
+20190529 12:22:39.750 - DEBUG - Finished Request
+20190529 12:22:39.751 - INFO - Current page contains element 'xpath=//li[contains(@class, 'active')]//span[normalize-space()="Hotels"]'.
+20190529 12:22:39.751 - INFO - +---- END KW: SeleniumLibrary.Page Should Contain Element (12)
+20190529 12:22:39.751 - INFO - +--- END KW: HomePage.HomePage.Navigate to Hotels Tab (118)
+20190529 12:22:39.751 - INFO - +--- START KW: HomePage.HomePage.Navigate to Flights Tab [ ]
+20190529 12:22:39.751 - INFO - +---- START KW: SeleniumLibrary.Click Element [ ${Home_${tabname}_Tab} ]
+20190529 12:22:39.752 - INFO - Clicking element 'xpath=//a[@title='Flights']'.
+20190529 12:22:39.752 - DEBUG - POST http://127.0.0.1:57414/session/ca0302997f2c0f0ae030809a33ac6ed6/elements {"using": "xpath", "sessionId": "ca0302997f2c0f0ae030809a33ac6ed6", "value": "//a[@title='Flights']"}
+20190529 12:22:39.765 - DEBUG - http://127.0.0.1:57414 "POST /session/ca0302997f2c0f0ae030809a33ac6ed6/elements HTTP/1.1" 200 105
+20190529 12:22:39.765 - DEBUG - Finished Request
+20190529 12:22:39.765 - DEBUG - POST http://127.0.0.1:57414/session/ca0302997f2c0f0ae030809a33ac6ed6/element/0.09412346317223674-2/click {"sessionId": "ca0302997f2c0f0ae030809a33ac6ed6", "id": "0.09412346317223674-2"}
+20190529 12:22:39.815 - DEBUG - http://127.0.0.1:57414 "POST /session/ca0302997f2c0f0ae030809a33ac6ed6/element/0.09412346317223674-2/click HTTP/1.1" 200 72
+20190529 12:22:39.816 - DEBUG - Finished Request
+20190529 12:22:39.816 - INFO - +---- END KW: SeleniumLibrary.Click Element (65)
+20190529 12:22:39.816 - INFO - +---- START KW: SeleniumLibrary.Wait Until Page Contains Element [ xpath=//li[contains(@class, 'active')]//span[normalize-space()="${tabname}"] ]
+20190529 12:22:39.817 - DEBUG - POST http://127.0.0.1:57414/session/ca0302997f2c0f0ae030809a33ac6ed6/elements {"using": "xpath", "sessionId": "ca0302997f2c0f0ae030809a33ac6ed6", "value": "//li[contains(@class, 'active')]//span[normalize-space()=\"Flights\"]"}
+20190529 12:22:39.846 - DEBUG - http://127.0.0.1:57414 "POST /session/ca0302997f2c0f0ae030809a33ac6ed6/elements HTTP/1.1" 200 105
+20190529 12:22:39.847 - DEBUG - Finished Request
+20190529 12:22:39.847 - INFO - +---- END KW: SeleniumLibrary.Wait Until Page Contains Element (31)
+20190529 12:22:39.847 - INFO - +---- START KW: SeleniumLibrary.Page Should Contain Element [ xpath=//li[contains(@class, 'active')]//span[normalize-space()="${tabname}"] ]
+20190529 12:22:39.848 - DEBUG - POST http://127.0.0.1:57414/session/ca0302997f2c0f0ae030809a33ac6ed6/elements {"using": "xpath", "sessionId": "ca0302997f2c0f0ae030809a33ac6ed6", "value": "//li[contains(@class, 'active')]//span[normalize-space()=\"Flights\"]"}
+20190529 12:22:39.858 - DEBUG - http://127.0.0.1:57414 "POST /session/ca0302997f2c0f0ae030809a33ac6ed6/elements HTTP/1.1" 200 105
+20190529 12:22:39.859 - DEBUG - Finished Request
+20190529 12:22:39.859 - INFO - Current page contains element 'xpath=//li[contains(@class, 'active')]//span[normalize-space()="Flights"]'.
+20190529 12:22:39.859 - INFO - +---- END KW: SeleniumLibrary.Page Should Contain Element (12)
+20190529 12:22:39.859 - INFO - +--- END KW: HomePage.HomePage.Navigate to Flights Tab (108)
+20190529 12:22:39.859 - INFO - +--- START KW: HomePage.HomePage.Navigate to Tours Tab [ ]
+20190529 12:22:39.860 - INFO - +---- START KW: SeleniumLibrary.Click Element [ ${Home_${tabname}_Tab} ]
+20190529 12:22:39.860 - INFO - Clicking element 'xpath=//a[@title='Tours']'.
+20190529 12:22:39.860 - DEBUG - POST http://127.0.0.1:57414/session/ca0302997f2c0f0ae030809a33ac6ed6/elements {"using": "xpath", "sessionId": "ca0302997f2c0f0ae030809a33ac6ed6", "value": "//a[@title='Tours']"}
+20190529 12:22:39.873 - DEBUG - http://127.0.0.1:57414 "POST /session/ca0302997f2c0f0ae030809a33ac6ed6/elements HTTP/1.1" 200 105
+20190529 12:22:39.873 - DEBUG - Finished Request
+20190529 12:22:39.874 - DEBUG - POST http://127.0.0.1:57414/session/ca0302997f2c0f0ae030809a33ac6ed6/element/0.09412346317223674-4/click {"sessionId": "ca0302997f2c0f0ae030809a33ac6ed6", "id": "0.09412346317223674-4"}
+20190529 12:22:39.928 - DEBUG - http://127.0.0.1:57414 "POST /session/ca0302997f2c0f0ae030809a33ac6ed6/element/0.09412346317223674-4/click HTTP/1.1" 200 72
+20190529 12:22:39.929 - DEBUG - Finished Request
+20190529 12:22:39.929 - INFO - +---- END KW: SeleniumLibrary.Click Element (69)
+20190529 12:22:39.929 - INFO - +---- START KW: SeleniumLibrary.Wait Until Page Contains Element [ xpath=//li[contains(@class, 'active')]//span[normalize-space()="${tabname}"] ]
+20190529 12:22:39.930 - DEBUG - POST http://127.0.0.1:57414/session/ca0302997f2c0f0ae030809a33ac6ed6/elements {"using": "xpath", "sessionId": "ca0302997f2c0f0ae030809a33ac6ed6", "value": "//li[contains(@class, 'active')]//span[normalize-space()=\"Tours\"]"}
+20190529 12:22:39.972 - DEBUG - http://127.0.0.1:57414 "POST /session/ca0302997f2c0f0ae030809a33ac6ed6/elements HTTP/1.1" 200 105
+20190529 12:22:39.973 - DEBUG - Finished Request
+20190529 12:22:39.973 - INFO - +---- END KW: SeleniumLibrary.Wait Until Page Contains Element (44)
+20190529 12:22:39.973 - INFO - +---- START KW: SeleniumLibrary.Page Should Contain Element [ xpath=//li[contains(@class, 'active')]//span[normalize-space()="${tabname}"] ]
+20190529 12:22:39.974 - DEBUG - POST http://127.0.0.1:57414/session/ca0302997f2c0f0ae030809a33ac6ed6/elements {"using": "xpath", "sessionId": "ca0302997f2c0f0ae030809a33ac6ed6", "value": "//li[contains(@class, 'active')]//span[normalize-space()=\"Tours\"]"}
+20190529 12:22:39.984 - DEBUG - http://127.0.0.1:57414 "POST /session/ca0302997f2c0f0ae030809a33ac6ed6/elements HTTP/1.1" 200 105
+20190529 12:22:39.984 - DEBUG - Finished Request
+20190529 12:22:39.984 - INFO - Current page contains element 'xpath=//li[contains(@class, 'active')]//span[normalize-space()="Tours"]'.
+20190529 12:22:39.984 - INFO - +---- END KW: SeleniumLibrary.Page Should Contain Element (11)
+20190529 12:22:39.984 - INFO - +--- END KW: HomePage.HomePage.Navigate to Tours Tab (125)
+20190529 12:22:39.984 - INFO - +-- END KW: BddKeywords.Then I should be able to navigate to Hotels/Flights/Tours tabs (352)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+20190529 12:22:39.985 - INFO - +-- START TEARDOWN: BaseTest.Base Web Test Tear Down [ ]
+20190529 12:22:39.986 - INFO - +--- START KW: SeleniumLibrary.Close All Browsers [ ]
+20190529 12:22:39.986 - DEBUG - Closing all browsers.
+20190529 12:22:39.986 - DEBUG - DELETE http://127.0.0.1:57414/session/ca0302997f2c0f0ae030809a33ac6ed6 {"sessionId": "ca0302997f2c0f0ae030809a33ac6ed6"}
+20190529 12:22:40.064 - DEBUG - http://127.0.0.1:57414 "DELETE /session/ca0302997f2c0f0ae030809a33ac6ed6 HTTP/1.1" 200 72
+20190529 12:22:40.065 - DEBUG - Finished Request
+20190529 12:22:42.353 - INFO - +--- END KW: SeleniumLibrary.Close All Browsers (2367)
+20190529 12:22:42.353 - INFO - +-- END TEARDOWN: BaseTest.Base Web Test Tear Down (2368)
+------------------------------------------------------------------------------
+20190529 12:22:42.354 - INFO - +- END TEST: TC1: Verify user can book a Hotel/Flight/Tours on PHP Travel (14327)
+------------------------------------------------------------------------------
+20190529 12:22:42.355 - INFO - +- START TEST: TC2: Book a hotel on PHP Travel [ ]
+------------------------------------------------------------------------------
+20190529 12:22:42.355 - INFO - +-- START SETUP: BaseTest.Base Web Test Setup [ Chrome ]
+20190529 12:22:42.356 - INFO - +--- START KW: SeleniumLibrary.Open Browser [ about: | browser=${ENVIRONMENT_BROWSERTYPE} ]
+20190529 12:22:42.356 - INFO - Opening browser 'Chrome' to base url 'about:'.
+20190529 12:22:42.964 - DEBUG - POST http://127.0.0.1:57463/session {"capabilities": {"alwaysMatch": {"goog:chromeOptions": {"args": [], "extensions": []}, "browserName": "chrome", "platformName": "any"}, "firstMatch": [{}]}, "desiredCapabilities": {"goog:chromeOptions": {"args": [], "extensions": []}, "platform": "ANY", "browserName": "chrome", "version": ""}}
+20190529 12:22:42.964 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:57463
+20190529 12:22:45.232 - DEBUG - http://127.0.0.1:57463 "POST /session HTTP/1.1" 200 1028
+20190529 12:22:45.232 - DEBUG - Finished Request
+20190529 12:22:45.233 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/timeouts/async_script {"sessionId": "4c1bc2a069955f42f34be705165c6d87", "ms": 5000.0}
+20190529 12:22:45.234 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/timeouts/async_script HTTP/1.1" 200 72
+20190529 12:22:45.234 - DEBUG - Finished Request
+20190529 12:22:45.234 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/timeouts/implicit_wait {"sessionId": "4c1bc2a069955f42f34be705165c6d87", "ms": 5000.0}
+20190529 12:22:45.235 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/timeouts/implicit_wait HTTP/1.1" 200 72
+20190529 12:22:45.235 - DEBUG - Finished Request
+20190529 12:22:45.236 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/url {"url": "about:", "sessionId": "4c1bc2a069955f42f34be705165c6d87"}
+20190529 12:22:45.484 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/url HTTP/1.1" 200 72
+20190529 12:22:45.485 - DEBUG - Finished Request
+20190529 12:22:45.485 - DEBUG - Opened browser with session id 4c1bc2a069955f42f34be705165c6d87.
+20190529 12:22:45.486 - INFO - +--- END KW: SeleniumLibrary.Open Browser (3130)
+20190529 12:22:45.486 - INFO - +--- START KW: SeleniumLibrary.Maximize Browser Window [ ]
+20190529 12:22:45.487 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/window/current/maximize {"windowHandle": "current", "sessionId": "4c1bc2a069955f42f34be705165c6d87"}
+20190529 12:22:46.610 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/window/current/maximize HTTP/1.1" 200 109
+20190529 12:22:46.610 - DEBUG - Finished Request
+20190529 12:22:46.610 - INFO - +--- END KW: SeleniumLibrary.Maximize Browser Window (1124)
+20190529 12:22:46.611 - INFO - +--- START KW: SeleniumLibrary.Set Selenium Implicit Wait [ 5 seconds ]
+20190529 12:22:46.611 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/timeouts/implicit_wait {"sessionId": "4c1bc2a069955f42f34be705165c6d87", "ms": 5000.0}
+20190529 12:22:46.612 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/timeouts/implicit_wait HTTP/1.1" 200 72
+20190529 12:22:46.612 - DEBUG - Finished Request
+20190529 12:22:46.613 - INFO - ${originalImplicitWait} = 5 seconds
+20190529 12:22:46.613 - INFO - +--- END KW: SeleniumLibrary.Set Selenium Implicit Wait (2)
+20190529 12:22:46.613 - INFO - +--- START KW: BuiltIn.Set Test Variable [ ${originalImplicitWait} ]
+20190529 12:22:46.613 - INFO - ${originalImplicitWait} = 5 seconds
+20190529 12:22:46.614 - INFO - +--- END KW: BuiltIn.Set Test Variable (1)
+20190529 12:22:46.614 - INFO - +--- START KW: SeleniumLibrary.Delete All Cookies [ ]
+20190529 12:22:46.614 - DEBUG - DELETE http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/cookie {"sessionId": "4c1bc2a069955f42f34be705165c6d87"}
+20190529 12:22:46.620 - DEBUG - http://127.0.0.1:57463 "DELETE /session/4c1bc2a069955f42f34be705165c6d87/cookie HTTP/1.1" 200 72
+20190529 12:22:46.621 - DEBUG - Finished Request
+20190529 12:22:46.621 - INFO - +--- END KW: SeleniumLibrary.Delete All Cookies (7)
+20190529 12:22:46.621 - INFO - +-- END SETUP: BaseTest.Base Web Test Setup (4266)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+20190529 12:22:46.621 - INFO - +-- START KW: BddKeywords.Given I am on PHP Travel Website [ ]
+20190529 12:22:46.622 - INFO - +--- START KW: SeleniumLibrary.Go To [ ${ENVIRONMENT_PHPTRAVEL_HOST} ]
+20190529 12:22:46.622 - INFO - Opening url 'https://www.phptravels.net/'
+20190529 12:22:46.622 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/url {"url": "https://www.phptravels.net/", "sessionId": "4c1bc2a069955f42f34be705165c6d87"}
+20190529 12:22:53.469 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/url HTTP/1.1" 200 72
+20190529 12:22:53.470 - DEBUG - Finished Request
+20190529 12:22:53.470 - INFO - +--- END KW: SeleniumLibrary.Go To (6848)
+20190529 12:22:53.471 - INFO - +--- START KW: SeleniumLibrary.Wait Until Page Contains Element [ ${Home_Logo} ]
+20190529 12:22:53.471 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/elements {"using": "xpath", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "value": "//img[contains(@alt, 'PHPTRAVELS | Travel Technology Partner')]"}
+20190529 12:22:53.496 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/elements HTTP/1.1" 200 104
+20190529 12:22:53.496 - DEBUG - Finished Request
+20190529 12:22:53.497 - INFO - +--- END KW: SeleniumLibrary.Wait Until Page Contains Element (27)
+20190529 12:22:53.497 - INFO - +-- END KW: BddKeywords.Given I am on PHP Travel Website (6876)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+20190529 12:22:53.497 - INFO - +-- START KW: BddKeywords.And I navigate to Hotels tab [ ]
+20190529 12:22:53.498 - INFO - +--- START KW: HomePage.HomePage.Navigate to ${tabname} Tab [ ]
+20190529 12:22:53.498 - INFO - +---- START KW: SeleniumLibrary.Click Element [ ${Home_${tabname}_Tab} ]
+20190529 12:22:53.499 - INFO - Clicking element 'xpath=//a[@title='Hotels']'.
+20190529 12:22:53.499 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/elements {"using": "xpath", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "value": "//a[@title='Hotels']"}
+20190529 12:22:53.516 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/elements HTTP/1.1" 200 104
+20190529 12:22:53.517 - DEBUG - Finished Request
+20190529 12:22:53.517 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/element/0.9476866365628078-2/click {"sessionId": "4c1bc2a069955f42f34be705165c6d87", "id": "0.9476866365628078-2"}
+20190529 12:22:53.580 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/element/0.9476866365628078-2/click HTTP/1.1" 200 72
+20190529 12:22:53.581 - DEBUG - Finished Request
+20190529 12:22:53.581 - INFO - +---- END KW: SeleniumLibrary.Click Element (83)
+20190529 12:22:53.581 - INFO - +---- START KW: SeleniumLibrary.Wait Until Page Contains Element [ xpath=//li[contains(@class, 'active')]//span[normalize-space()="${tabname}"] ]
+20190529 12:22:53.582 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/elements {"using": "xpath", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "value": "//li[contains(@class, 'active')]//span[normalize-space()=\"Hotels\"]"}
+20190529 12:22:53.605 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/elements HTTP/1.1" 200 104
+20190529 12:22:53.605 - DEBUG - Finished Request
+20190529 12:22:53.606 - INFO - +---- END KW: SeleniumLibrary.Wait Until Page Contains Element (25)
+20190529 12:22:53.606 - INFO - +---- START KW: SeleniumLibrary.Page Should Contain Element [ xpath=//li[contains(@class, 'active')]//span[normalize-space()="${tabname}"] ]
+20190529 12:22:53.607 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/elements {"using": "xpath", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "value": "//li[contains(@class, 'active')]//span[normalize-space()=\"Hotels\"]"}
+20190529 12:22:53.622 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/elements HTTP/1.1" 200 104
+20190529 12:22:53.622 - DEBUG - Finished Request
+20190529 12:22:53.623 - INFO - Current page contains element 'xpath=//li[contains(@class, 'active')]//span[normalize-space()="Hotels"]'.
+20190529 12:22:53.623 - INFO - +---- END KW: SeleniumLibrary.Page Should Contain Element (17)
+20190529 12:22:53.623 - INFO - +--- END KW: HomePage.HomePage.Navigate to ${tabname} Tab (125)
+20190529 12:22:53.623 - INFO - +-- END KW: BddKeywords.And I navigate to Hotels tab (126)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+20190529 12:22:53.624 - INFO - +-- START KW: BddKeywords.When I fill in search details and click search [ ${None} | 22/05/2019 | 25/06/2019 ]
+20190529 12:22:53.625 - INFO - +--- START KW: HomePage.HomePage.Fill in details to search for Hotels [ ${name} | ${checkindate} | ${checkoutdate} ]
+20190529 12:22:53.626 - INFO - +---- START KW: BuiltIn.Run Keyword If [ "${name}"!="${None}" | click element | ${Home_Hotels_HotelorCity} ]
+20190529 12:22:53.626 - INFO - +---- END KW: BuiltIn.Run Keyword If (0)
+20190529 12:22:53.626 - INFO - +---- START KW: BuiltIn.Run Keyword If [ "${name}"!="${None}" | input text | xpath=//input[@class="select2-offscreen"] | ${name} ]
+20190529 12:22:53.627 - INFO - +---- END KW: BuiltIn.Run Keyword If (1)
+20190529 12:22:53.627 - INFO - +---- START KW: BuiltIn.Run Keyword If [ "${checkindate}"!="${None}" | input text | ${Home_Hotels_CheckIn} | ${checkindate} ]
+20190529 12:22:53.627 - INFO - +----- START KW: SeleniumLibrary.Input Text [ ${Home_Hotels_CheckIn} | ${checkindate} ]
+20190529 12:22:53.628 - INFO - Typing text '22/05/2019' into text field 'xpath=//input[@placeholder="Check in"]'.
+20190529 12:22:53.628 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/elements {"using": "xpath", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "value": "//input[@placeholder=\"Check in\"]"}
+20190529 12:22:53.643 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/elements HTTP/1.1" 200 139
+20190529 12:22:53.643 - DEBUG - Finished Request
+20190529 12:22:53.644 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/element/0.9476866365628078-4/clear {"sessionId": "4c1bc2a069955f42f34be705165c6d87", "id": "0.9476866365628078-4"}
+20190529 12:22:53.669 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/element/0.9476866365628078-4/clear HTTP/1.1" 200 72
+20190529 12:22:53.669 - DEBUG - Finished Request
+20190529 12:22:53.670 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/element/0.9476866365628078-4/value {"text": "22/05/2019", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "id": "0.9476866365628078-4", "value": ["2", "2", "/", "0", "5", "/", "2", "0", "1", "9"]}
+20190529 12:22:53.821 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/element/0.9476866365628078-4/value HTTP/1.1" 200 72
+20190529 12:22:53.821 - DEBUG - Finished Request
+20190529 12:22:53.822 - INFO - +----- END KW: SeleniumLibrary.Input Text (195)
+20190529 12:22:53.822 - INFO - +---- END KW: BuiltIn.Run Keyword If (195)
+20190529 12:22:53.822 - INFO - +---- START KW: BuiltIn.Run Keyword If [ "${checkoutdate}"!="${None}" | input text | ${Home_Hotels_CheckOut} | ${checkoutdate} ]
+20190529 12:22:53.824 - INFO - +----- START KW: SeleniumLibrary.Input Text [ ${Home_Hotels_CheckOut} | ${checkoutdate} ]
+20190529 12:22:53.824 - INFO - Typing text '25/06/2019' into text field 'xpath=//input[@placeholder="Check out"]'.
+20190529 12:22:53.824 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/elements {"using": "xpath", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "value": "//input[@placeholder=\"Check out\"]"}
+20190529 12:22:53.844 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/elements HTTP/1.1" 200 104
+20190529 12:22:53.845 - DEBUG - Finished Request
+20190529 12:22:53.845 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/element/0.9476866365628078-6/clear {"sessionId": "4c1bc2a069955f42f34be705165c6d87", "id": "0.9476866365628078-6"}
+20190529 12:22:53.871 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/element/0.9476866365628078-6/clear HTTP/1.1" 200 72
+20190529 12:22:53.872 - DEBUG - Finished Request
+20190529 12:22:53.872 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/element/0.9476866365628078-6/value {"text": "25/06/2019", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "id": "0.9476866365628078-6", "value": ["2", "5", "/", "0", "6", "/", "2", "0", "1", "9"]}
+20190529 12:22:54.002 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/element/0.9476866365628078-6/value HTTP/1.1" 200 72
+20190529 12:22:54.002 - DEBUG - Finished Request
+20190529 12:22:54.002 - INFO - +----- END KW: SeleniumLibrary.Input Text (178)
+20190529 12:22:54.002 - INFO - +---- END KW: BuiltIn.Run Keyword If (180)
+20190529 12:22:54.002 - INFO - +--- END KW: HomePage.HomePage.Fill in details to search for Hotels (377)
+20190529 12:22:54.003 - INFO - +--- START KW: HomePage.Homepage.Click Search Button [ ]
+20190529 12:22:54.003 - INFO - +---- START KW: SeleniumLibrary.Click Element [ ${Home_Hotels_Search} ]
+20190529 12:22:54.004 - INFO - Clicking element 'xpath=//button[normalize-space()="Search"]'.
+20190529 12:22:54.004 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/elements {"using": "xpath", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "value": "//button[normalize-space()=\"Search\"]"}
+20190529 12:22:54.021 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/elements HTTP/1.1" 200 210
+20190529 12:22:54.022 - DEBUG - Finished Request
+20190529 12:22:54.022 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/element/0.9476866365628078-7/click {"sessionId": "4c1bc2a069955f42f34be705165c6d87", "id": "0.9476866365628078-7"}
+20190529 12:22:56.866 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/element/0.9476866365628078-7/click HTTP/1.1" 200 72
+20190529 12:22:56.867 - DEBUG - Finished Request
+20190529 12:22:56.867 - INFO - +---- END KW: SeleniumLibrary.Click Element (2864)
+20190529 12:22:56.867 - INFO - +--- END KW: HomePage.Homepage.Click Search Button (2864)
+20190529 12:22:56.867 - INFO - +-- END KW: BddKeywords.When I fill in search details and click search (3243)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+20190529 12:22:56.867 - INFO - +-- START KW: BddKeywords.And I should see a list of Hotels matching search criteria [ ]
+20190529 12:22:56.868 - INFO - +--- START KW: Search.Search.I verify table with data loads [ ]
+20190529 12:22:56.868 - INFO - +---- START KW: SeleniumLibrary.Wait Until Page Contains Element [ ${Search_Table} ]
+20190529 12:22:56.868 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/elements {"using": "xpath", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "value": "//table[contains(@class, 'table')]"}
+20190529 12:22:56.885 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/elements HTTP/1.1" 200 314
+20190529 12:22:56.885 - DEBUG - Finished Request
+20190529 12:22:56.885 - INFO - +---- END KW: SeleniumLibrary.Wait Until Page Contains Element (17)
+20190529 12:22:56.885 - INFO - +---- START KW: SeleniumLibrary.Element Should Be Visible [ ${Search_Details} ]
+20190529 12:22:56.886 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/elements {"using": "xpath", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "value": "//button[text()='Details']"}
+20190529 12:22:56.899 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/elements HTTP/1.1" 200 355
+20190529 12:22:56.899 - DEBUG - Finished Request
+20190529 12:22:56.899 - DEBUG - GET http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/element/0.5709831023161118-8/displayed {"sessionId": "4c1bc2a069955f42f34be705165c6d87", "id": "0.5709831023161118-8"}
+20190529 12:22:56.911 - DEBUG - http://127.0.0.1:57463 "GET /session/4c1bc2a069955f42f34be705165c6d87/element/0.5709831023161118-8/displayed HTTP/1.1" 200 72
+20190529 12:22:56.912 - DEBUG - Finished Request
+20190529 12:22:56.912 - INFO - Element 'xpath=//button[text()='Details']' is displayed.
+20190529 12:22:56.912 - INFO - +---- END KW: SeleniumLibrary.Element Should Be Visible (27)
+20190529 12:22:56.913 - INFO - +--- END KW: Search.Search.I verify table with data loads (45)
+20190529 12:22:56.913 - INFO - +-- END KW: BddKeywords.And I should see a list of Hotels matching search criteria (46)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+20190529 12:22:56.913 - INFO - +-- START KW: BddKeywords.Then I can select a Hotel from list [ Rendezvous Hotels ]
+20190529 12:22:56.914 - INFO - +--- START KW: Search.Search.Click Details for Hotel ${hotelname} [ ]
+20190529 12:22:56.914 - INFO - +---- START KW: SeleniumLibrary.Click Element [ xpath=//b[text()='${HotelName}']/ancestor::td//button[text()='Details'] ]
+20190529 12:22:56.915 - INFO - Clicking element 'xpath=//b[text()='Rendezvous Hotels']/ancestor::td//button[text()='Details']'.
+20190529 12:22:56.915 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/elements {"using": "xpath", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "value": "//b[text()='Rendezvous Hotels']/ancestor::td//button[text()='Details']"}
+20190529 12:22:56.928 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/elements HTTP/1.1" 200 104
+20190529 12:22:56.929 - DEBUG - Finished Request
+20190529 12:22:56.929 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/element/0.5709831023161118-9/click {"sessionId": "4c1bc2a069955f42f34be705165c6d87", "id": "0.5709831023161118-9"}
+20190529 12:23:03.646 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/element/0.5709831023161118-9/click HTTP/1.1" 200 72
+20190529 12:23:03.647 - DEBUG - Finished Request
+20190529 12:23:03.647 - INFO - +---- END KW: SeleniumLibrary.Click Element (6733)
+20190529 12:23:03.647 - INFO - +--- END KW: Search.Search.Click Details for Hotel ${hotelname} (6733)
+20190529 12:23:03.648 - INFO - +-- END KW: BddKeywords.Then I can select a Hotel from list (6734)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+20190529 12:23:03.648 - INFO - +-- START KW: BddKeywords.And I can select a room to book [ Triple Rooms ]
+20190529 12:23:03.649 - INFO - +--- START KW: HotelDetails.HotelDetails.Select Room [ ${roomtype} ]
+20190529 12:23:03.649 - INFO - +---- START KW: SeleniumLibrary.Wait Until Page Contains Element [ xpath=//b[text()='${roomtype}']/ancestor::td//label ]
+20190529 12:23:03.649 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/elements {"using": "xpath", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "value": "//b[text()='Triple Rooms']/ancestor::td//label"}
+20190529 12:23:03.667 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/elements HTTP/1.1" 200 105
+20190529 12:23:03.667 - DEBUG - Finished Request
+20190529 12:23:03.668 - INFO - +---- END KW: SeleniumLibrary.Wait Until Page Contains Element (18)
+20190529 12:23:03.668 - INFO - +---- START KW: UIUtilities.Utilities.Scroll to Element [ xpath=//b[text()='${roomtype}']/ancestor::td//label ]
+20190529 12:23:03.668 - INFO - +----- START KW: SeleniumLibrary.Wait Until Page Contains Element [ ${the_element} | timeout=5 seconds | error=*HTML* <span style="color:red;font-weight:bold">φ</span> Scroll to Element:: unable to locate the element '${the_element}' ]
+20190529 12:23:03.669 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/elements {"using": "xpath", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "value": "//b[text()='Triple Rooms']/ancestor::td//label"}
+20190529 12:23:03.679 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/elements HTTP/1.1" 200 105
+20190529 12:23:03.679 - DEBUG - Finished Request
+20190529 12:23:03.680 - INFO - +----- END KW: SeleniumLibrary.Wait Until Page Contains Element (12)
+20190529 12:23:03.680 - INFO - +----- START KW: SeleniumLibrary.Get Vertical Position [ ${the_element} ]
+20190529 12:23:03.680 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/elements {"using": "xpath", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "value": "//b[text()='Triple Rooms']/ancestor::td//label"}
+20190529 12:23:03.691 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/elements HTTP/1.1" 200 105
+20190529 12:23:03.691 - DEBUG - Finished Request
+20190529 12:23:03.692 - DEBUG - GET http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/element/0.18644190624309265-1/location {"sessionId": "4c1bc2a069955f42f34be705165c6d87", "id": "0.18644190624309265-1"}
+20190529 12:23:03.697 - DEBUG - http://127.0.0.1:57463 "GET /session/4c1bc2a069955f42f34be705165c6d87/element/0.18644190624309265-1/location HTTP/1.1" 200 189
+20190529 12:23:03.697 - DEBUG - Finished Request
+20190529 12:23:03.698 - INFO - ${vert_pos} = 1365.0
+20190529 12:23:03.698 - INFO - +----- END KW: SeleniumLibrary.Get Vertical Position (18)
+20190529 12:23:03.698 - INFO - +----- START KW: SeleniumLibrary.Get Horizontal Position [ ${the_element} ]
+20190529 12:23:03.698 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/elements {"using": "xpath", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "value": "//b[text()='Triple Rooms']/ancestor::td//label"}
+20190529 12:23:03.708 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/elements HTTP/1.1" 200 105
+20190529 12:23:03.708 - DEBUG - Finished Request
+20190529 12:23:03.708 - DEBUG - GET http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/element/0.18644190624309265-1/location {"sessionId": "4c1bc2a069955f42f34be705165c6d87", "id": "0.18644190624309265-1"}
+20190529 12:23:03.714 - DEBUG - http://127.0.0.1:57463 "GET /session/4c1bc2a069955f42f34be705165c6d87/element/0.18644190624309265-1/location HTTP/1.1" 200 189
+20190529 12:23:03.714 - DEBUG - Finished Request
+20190529 12:23:03.714 - INFO - ${horz_pos} = 1233.0
+20190529 12:23:03.714 - INFO - +----- END KW: SeleniumLibrary.Get Horizontal Position (16)
+20190529 12:23:03.715 - INFO - +----- START KW: BuiltIn.Evaluate [ ${vert_pos} - ${vert_offset} ]
+20190529 12:23:03.715 - INFO - ${vert_pos} = 1315.0
+20190529 12:23:03.715 - INFO - +----- END KW: BuiltIn.Evaluate (0)
+20190529 12:23:03.715 - INFO - +----- START KW: SeleniumLibrary.Execute Javascript [ window.scrollTo(${horz_pos},${vert_pos}) ]
+20190529 12:23:03.717 - INFO - Executing JavaScript:
+window.scrollTo(1233.0,1315.0)
+Without any arguments.
+20190529 12:23:03.717 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/execute {"sessionId": "4c1bc2a069955f42f34be705165c6d87", "args": [], "script": "window.scrollTo(1233.0,1315.0)"}
+20190529 12:23:03.724 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/execute HTTP/1.1" 200 72
+20190529 12:23:03.725 - DEBUG - Finished Request
+20190529 12:23:03.725 - INFO - +----- END KW: SeleniumLibrary.Execute Javascript (10)
+20190529 12:23:03.725 - INFO - +----- START KW: BuiltIn.Sleep [ .25 seconds ]
+20190529 12:23:03.975 - INFO - Slept 250 milliseconds
+20190529 12:23:03.975 - INFO - +----- END KW: BuiltIn.Sleep (250)
+20190529 12:23:03.975 - INFO - +---- END KW: UIUtilities.Utilities.Scroll to Element (307)
+20190529 12:23:03.975 - INFO - +---- START KW: SeleniumLibrary.Click Element [ xpath=//b[text()='${roomtype}']/ancestor::td//label ]
+20190529 12:23:03.976 - INFO - Clicking element 'xpath=//b[text()='Triple Rooms']/ancestor::td//label'.
+20190529 12:23:03.976 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/elements {"using": "xpath", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "value": "//b[text()='Triple Rooms']/ancestor::td//label"}
+20190529 12:23:03.986 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/elements HTTP/1.1" 200 105
+20190529 12:23:03.986 - DEBUG - Finished Request
+20190529 12:23:03.987 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/element/0.18644190624309265-1/click {"sessionId": "4c1bc2a069955f42f34be705165c6d87", "id": "0.18644190624309265-1"}
+20190529 12:23:04.047 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/element/0.18644190624309265-1/click HTTP/1.1" 200 72
+20190529 12:23:04.047 - DEBUG - Finished Request
+20190529 12:23:04.048 - INFO - +---- END KW: SeleniumLibrary.Click Element (72)
+20190529 12:23:04.048 - INFO - +--- END KW: HotelDetails.HotelDetails.Select Room (399)
+20190529 12:23:04.048 - INFO - +--- START KW: HotelDetails.HotleDetails.click Proceed [ ]
+20190529 12:23:04.048 - INFO - +---- START KW: SeleniumLibrary.Click Element [ ${HotelDetails_BookNow} ]
+20190529 12:23:04.049 - INFO - Clicking element 'xpath=//button[normalize-space()="Book Now"]'.
+20190529 12:23:04.049 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/elements {"using": "xpath", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "value": "//button[normalize-space()=\"Book Now\"]"}
+20190529 12:23:04.066 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/elements HTTP/1.1" 200 105
+20190529 12:23:04.066 - DEBUG - Finished Request
+20190529 12:23:04.066 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/element/0.18644190624309265-2/click {"sessionId": "4c1bc2a069955f42f34be705165c6d87", "id": "0.18644190624309265-2"}
+20190529 12:23:08.450 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/element/0.18644190624309265-2/click HTTP/1.1" 200 72
+20190529 12:23:08.451 - DEBUG - Finished Request
+20190529 12:23:08.451 - INFO - +---- END KW: SeleniumLibrary.Click Element (4403)
+20190529 12:23:08.451 - INFO - +--- END KW: HotelDetails.HotleDetails.click Proceed (4403)
+20190529 12:23:08.451 - INFO - +-- END KW: BddKeywords.And I can select a room to book (4803)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+20190529 12:23:08.452 - INFO - +-- START KW: BddKeywords.And I can confirm my booking [ ]
+20190529 12:23:08.452 - INFO - +--- START KW: Booking.Booking.Fill in Personal Details [ ]
+20190529 12:23:08.452 - INFO - +---- START KW: SeleniumLibrary.Wait Until Page Contains Element [ ${Booking_FirstName} ]
+20190529 12:23:08.453 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/elements {"using": "xpath", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "value": "//input[@name=\"firstname\"]"}
+20190529 12:23:08.467 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/elements HTTP/1.1" 200 104
+20190529 12:23:08.467 - DEBUG - Finished Request
+20190529 12:23:08.467 - INFO - +---- END KW: SeleniumLibrary.Wait Until Page Contains Element (15)
+20190529 12:23:08.467 - INFO - +---- START KW: SeleniumLibrary.Input Text [ ${Booking_FirstName} | Peter ]
+20190529 12:23:08.468 - INFO - Typing text 'Peter' into text field 'xpath=//input[@name="firstname"]'.
+20190529 12:23:08.468 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/elements {"using": "xpath", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "value": "//input[@name=\"firstname\"]"}
+20190529 12:23:08.479 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/elements HTTP/1.1" 200 104
+20190529 12:23:08.479 - DEBUG - Finished Request
+20190529 12:23:08.479 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/element/0.8588246809597988-1/clear {"sessionId": "4c1bc2a069955f42f34be705165c6d87", "id": "0.8588246809597988-1"}
+20190529 12:23:08.504 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/element/0.8588246809597988-1/clear HTTP/1.1" 200 72
+20190529 12:23:08.504 - DEBUG - Finished Request
+20190529 12:23:08.504 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/element/0.8588246809597988-1/value {"text": "Peter", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "id": "0.8588246809597988-1", "value": ["P", "e", "t", "e", "r"]}
+20190529 12:23:08.559 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/element/0.8588246809597988-1/value HTTP/1.1" 200 72
+20190529 12:23:08.560 - DEBUG - Finished Request
+20190529 12:23:08.560 - INFO - +---- END KW: SeleniumLibrary.Input Text (93)
+20190529 12:23:08.560 - INFO - +---- START KW: SeleniumLibrary.Input Text [ ${Booking_LastName} | Parker ]
+20190529 12:23:08.560 - INFO - Typing text 'Parker' into text field 'xpath=//input[@name="lastname"]'.
+20190529 12:23:08.560 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/elements {"using": "xpath", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "value": "//input[@name=\"lastname\"]"}
+20190529 12:23:08.571 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/elements HTTP/1.1" 200 104
+20190529 12:23:08.572 - DEBUG - Finished Request
+20190529 12:23:08.572 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/element/0.8588246809597988-2/clear {"sessionId": "4c1bc2a069955f42f34be705165c6d87", "id": "0.8588246809597988-2"}
+20190529 12:23:08.599 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/element/0.8588246809597988-2/clear HTTP/1.1" 200 72
+20190529 12:23:08.599 - DEBUG - Finished Request
+20190529 12:23:08.600 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/element/0.8588246809597988-2/value {"text": "Parker", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "id": "0.8588246809597988-2", "value": ["P", "a", "r", "k", "e", "r"]}
+20190529 12:23:08.658 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/element/0.8588246809597988-2/value HTTP/1.1" 200 72
+20190529 12:23:08.658 - DEBUG - Finished Request
+20190529 12:23:08.659 - INFO - +---- END KW: SeleniumLibrary.Input Text (98)
+20190529 12:23:08.659 - INFO - +---- START KW: SeleniumLibrary.Input Text [ ${Booking_Email} | peterparker@phptravels.net ]
+20190529 12:23:08.659 - INFO - Typing text 'peterparker@phptravels.net' into text field 'xpath=//input[@name="email"]'.
+20190529 12:23:08.660 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/elements {"using": "xpath", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "value": "//input[@name=\"email\"]"}
+20190529 12:23:08.671 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/elements HTTP/1.1" 200 104
+20190529 12:23:08.672 - DEBUG - Finished Request
+20190529 12:23:08.672 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/element/0.8588246809597988-3/clear {"sessionId": "4c1bc2a069955f42f34be705165c6d87", "id": "0.8588246809597988-3"}
+20190529 12:23:08.698 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/element/0.8588246809597988-3/clear HTTP/1.1" 200 72
+20190529 12:23:08.698 - DEBUG - Finished Request
+20190529 12:23:08.698 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/element/0.8588246809597988-3/value {"text": "peterparker@phptravels.net", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "id": "0.8588246809597988-3", "value": ["p", "e", "t", "e", "r", "p", "a", "r", "k", "e", "r", "@", "p", "h", "p", "t", "r", "a", "v", "e", "l", "s", ".", "n", "e", "t"]}
+20190529 12:23:08.825 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/element/0.8588246809597988-3/value HTTP/1.1" 200 72
+20190529 12:23:08.825 - DEBUG - Finished Request
+20190529 12:23:08.826 - INFO - +---- END KW: SeleniumLibrary.Input Text (167)
+20190529 12:23:08.826 - INFO - +---- START KW: SeleniumLibrary.Input Text [ ${Booking_ConfirmEmail} | peterparker@phptravels.net ]
+20190529 12:23:08.826 - INFO - Typing text 'peterparker@phptravels.net' into text field 'xpath=//input[@name="confirmemail"]'.
+20190529 12:23:08.826 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/elements {"using": "xpath", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "value": "//input[@name=\"confirmemail\"]"}
+20190529 12:23:08.841 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/elements HTTP/1.1" 200 104
+20190529 12:23:08.841 - DEBUG - Finished Request
+20190529 12:23:08.842 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/element/0.8588246809597988-4/clear {"sessionId": "4c1bc2a069955f42f34be705165c6d87", "id": "0.8588246809597988-4"}
+20190529 12:23:08.865 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/element/0.8588246809597988-4/clear HTTP/1.1" 200 72
+20190529 12:23:08.865 - DEBUG - Finished Request
+20190529 12:23:08.866 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/element/0.8588246809597988-4/value {"text": "peterparker@phptravels.net", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "id": "0.8588246809597988-4", "value": ["p", "e", "t", "e", "r", "p", "a", "r", "k", "e", "r", "@", "p", "h", "p", "t", "r", "a", "v", "e", "l", "s", ".", "n", "e", "t"]}
+20190529 12:23:09.002 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/element/0.8588246809597988-4/value HTTP/1.1" 200 72
+20190529 12:23:09.003 - DEBUG - Finished Request
+20190529 12:23:09.003 - INFO - +---- END KW: SeleniumLibrary.Input Text (177)
+20190529 12:23:09.003 - INFO - +---- START KW: SeleniumLibrary.Input Text [ ${Booking_Mobile} | 0400000000 ]
+20190529 12:23:09.004 - INFO - Typing text '0400000000' into text field 'xpath=//input[@name="phone"]'.
+20190529 12:23:09.004 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/elements {"using": "xpath", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "value": "//input[@name=\"phone\"]"}
+20190529 12:23:09.017 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/elements HTTP/1.1" 200 104
+20190529 12:23:09.017 - DEBUG - Finished Request
+20190529 12:23:09.018 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/element/0.8588246809597988-5/clear {"sessionId": "4c1bc2a069955f42f34be705165c6d87", "id": "0.8588246809597988-5"}
+20190529 12:23:09.042 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/element/0.8588246809597988-5/clear HTTP/1.1" 200 72
+20190529 12:23:09.043 - DEBUG - Finished Request
+20190529 12:23:09.043 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/element/0.8588246809597988-5/value {"text": "0400000000", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "id": "0.8588246809597988-5", "value": ["0", "4", "0", "0", "0", "0", "0", "0", "0", "0"]}
+20190529 12:23:09.111 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/element/0.8588246809597988-5/value HTTP/1.1" 200 72
+20190529 12:23:09.111 - DEBUG - Finished Request
+20190529 12:23:09.112 - INFO - +---- END KW: SeleniumLibrary.Input Text (109)
+20190529 12:23:09.112 - INFO - +---- START KW: SeleniumLibrary.Input Text [ ${Booking_Address} | 33 Alfred Street ]
+20190529 12:23:09.112 - INFO - Typing text '33 Alfred Street' into text field 'xpath=//input[@name="address"]'.
+20190529 12:23:09.112 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/elements {"using": "xpath", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "value": "//input[@name=\"address\"]"}
+20190529 12:23:09.125 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/elements HTTP/1.1" 200 104
+20190529 12:23:09.125 - DEBUG - Finished Request
+20190529 12:23:09.125 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/element/0.8588246809597988-6/clear {"sessionId": "4c1bc2a069955f42f34be705165c6d87", "id": "0.8588246809597988-6"}
+20190529 12:23:09.148 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/element/0.8588246809597988-6/clear HTTP/1.1" 200 72
+20190529 12:23:09.148 - DEBUG - Finished Request
+20190529 12:23:09.148 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/element/0.8588246809597988-6/value {"text": "33 Alfred Street", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "id": "0.8588246809597988-6", "value": ["3", "3", " ", "A", "l", "f", "r", "e", "d", " ", "S", "t", "r", "e", "e", "t"]}
+20190529 12:23:09.243 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/element/0.8588246809597988-6/value HTTP/1.1" 200 72
+20190529 12:23:09.244 - DEBUG - Finished Request
+20190529 12:23:09.244 - INFO - +---- END KW: SeleniumLibrary.Input Text (132)
+20190529 12:23:09.244 - INFO - +---- START KW: SeleniumLibrary.Click Element [ ${Booking_Country_Select} ]
+20190529 12:23:09.244 - INFO - Clicking element 'xpath=//span[text()="Select Country"]'.
+20190529 12:23:09.245 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/elements {"using": "xpath", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "value": "//span[text()=\"Select Country\"]"}
+20190529 12:23:09.257 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/elements HTTP/1.1" 200 104
+20190529 12:23:09.258 - DEBUG - Finished Request
+20190529 12:23:09.258 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/element/0.8588246809597988-7/click {"sessionId": "4c1bc2a069955f42f34be705165c6d87", "id": "0.8588246809597988-7"}
+20190529 12:23:09.363 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/element/0.8588246809597988-7/click HTTP/1.1" 200 72
+20190529 12:23:09.364 - DEBUG - Finished Request
+20190529 12:23:09.364 - INFO - +---- END KW: SeleniumLibrary.Click Element (120)
+20190529 12:23:09.364 - INFO - +---- START KW: SeleniumLibrary.Click Element [ ${Booking_Country_Australia} ]
+20190529 12:23:09.365 - INFO - Clicking element 'xpath=//div[text()="Australia"]'.
+20190529 12:23:09.365 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/elements {"using": "xpath", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "value": "//div[text()=\"Australia\"]"}
+20190529 12:23:09.380 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/elements HTTP/1.1" 200 104
+20190529 12:23:09.381 - DEBUG - Finished Request
+20190529 12:23:09.381 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/element/0.8588246809597988-8/click {"sessionId": "4c1bc2a069955f42f34be705165c6d87", "id": "0.8588246809597988-8"}
+20190529 12:23:09.448 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/element/0.8588246809597988-8/click HTTP/1.1" 200 72
+20190529 12:23:09.448 - DEBUG - Finished Request
+20190529 12:23:09.448 - INFO - +---- END KW: SeleniumLibrary.Click Element (84)
+20190529 12:23:09.448 - INFO - +--- END KW: Booking.Booking.Fill in Personal Details (996)
+20190529 12:23:09.449 - INFO - +--- START KW: Booking.Booking.Click Book Now [ ]
+20190529 12:23:09.449 - INFO - +---- START KW: UIUtilities.Utilities.Scroll to Element [ ${Booking_ConfirmBooking} ]
+20190529 12:23:09.450 - INFO - +----- START KW: SeleniumLibrary.Wait Until Page Contains Element [ ${the_element} | timeout=5 seconds | error=*HTML* <span style="color:red;font-weight:bold">φ</span> Scroll to Element:: unable to locate the element '${the_element}' ]
+20190529 12:23:09.450 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/elements {"using": "xpath", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "value": "//button[text()=\"CONFIRM THIS BOOKING\"]"}
+20190529 12:23:09.463 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/elements HTTP/1.1" 200 104
+20190529 12:23:09.463 - DEBUG - Finished Request
+20190529 12:23:09.463 - INFO - +----- END KW: SeleniumLibrary.Wait Until Page Contains Element (13)
+20190529 12:23:09.464 - INFO - +----- START KW: SeleniumLibrary.Get Vertical Position [ ${the_element} ]
+20190529 12:23:09.464 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/elements {"using": "xpath", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "value": "//button[text()=\"CONFIRM THIS BOOKING\"]"}
+20190529 12:23:09.471 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/elements HTTP/1.1" 200 104
+20190529 12:23:09.471 - DEBUG - Finished Request
+20190529 12:23:09.472 - DEBUG - GET http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/element/0.8588246809597988-9/location {"sessionId": "4c1bc2a069955f42f34be705165c6d87", "id": "0.8588246809597988-9"}
+20190529 12:23:09.477 - DEBUG - http://127.0.0.1:57463 "GET /session/4c1bc2a069955f42f34be705165c6d87/element/0.8588246809597988-9/location HTTP/1.1" 200 186
+20190529 12:23:09.477 - DEBUG - Finished Request
+20190529 12:23:09.477 - INFO - ${vert_pos} = 1278.0
+20190529 12:23:09.477 - INFO - +----- END KW: SeleniumLibrary.Get Vertical Position (13)
+20190529 12:23:09.478 - INFO - +----- START KW: SeleniumLibrary.Get Horizontal Position [ ${the_element} ]
+20190529 12:23:09.478 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/elements {"using": "xpath", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "value": "//button[text()=\"CONFIRM THIS BOOKING\"]"}
+20190529 12:23:09.484 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/elements HTTP/1.1" 200 104
+20190529 12:23:09.485 - DEBUG - Finished Request
+20190529 12:23:09.485 - DEBUG - GET http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/element/0.8588246809597988-9/location {"sessionId": "4c1bc2a069955f42f34be705165c6d87", "id": "0.8588246809597988-9"}
+20190529 12:23:09.488 - DEBUG - http://127.0.0.1:57463 "GET /session/4c1bc2a069955f42f34be705165c6d87/element/0.8588246809597988-9/location HTTP/1.1" 200 186
+20190529 12:23:09.489 - DEBUG - Finished Request
+20190529 12:23:09.489 - INFO - ${horz_pos} = 276.0
+20190529 12:23:09.489 - INFO - +----- END KW: SeleniumLibrary.Get Horizontal Position (11)
+20190529 12:23:09.489 - INFO - +----- START KW: BuiltIn.Evaluate [ ${vert_pos} - ${vert_offset} ]
+20190529 12:23:09.490 - INFO - ${vert_pos} = 1228.0
+20190529 12:23:09.490 - INFO - +----- END KW: BuiltIn.Evaluate (1)
+20190529 12:23:09.490 - INFO - +----- START KW: SeleniumLibrary.Execute Javascript [ window.scrollTo(${horz_pos},${vert_pos}) ]
+20190529 12:23:09.491 - INFO - Executing JavaScript:
+window.scrollTo(276.0,1228.0)
+Without any arguments.
+20190529 12:23:09.491 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/execute {"sessionId": "4c1bc2a069955f42f34be705165c6d87", "args": [], "script": "window.scrollTo(276.0,1228.0)"}
+20190529 12:23:09.495 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/execute HTTP/1.1" 200 72
+20190529 12:23:09.495 - DEBUG - Finished Request
+20190529 12:23:09.495 - INFO - +----- END KW: SeleniumLibrary.Execute Javascript (5)
+20190529 12:23:09.495 - INFO - +----- START KW: BuiltIn.Sleep [ .25 seconds ]
+20190529 12:23:09.746 - INFO - Slept 250 milliseconds
+20190529 12:23:09.746 - INFO - +----- END KW: BuiltIn.Sleep (251)
+20190529 12:23:09.746 - INFO - +---- END KW: UIUtilities.Utilities.Scroll to Element (297)
+20190529 12:23:09.746 - INFO - +---- START KW: SeleniumLibrary.Click Element [ ${Booking_ConfirmBooking} ]
+20190529 12:23:09.747 - INFO - Clicking element 'xpath=//button[text()="CONFIRM THIS BOOKING"]'.
+20190529 12:23:09.747 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/elements {"using": "xpath", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "value": "//button[text()=\"CONFIRM THIS BOOKING\"]"}
+20190529 12:23:09.755 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/elements HTTP/1.1" 200 104
+20190529 12:23:09.756 - DEBUG - Finished Request
+20190529 12:23:09.756 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/element/0.8588246809597988-9/click {"sessionId": "4c1bc2a069955f42f34be705165c6d87", "id": "0.8588246809597988-9"}
+20190529 12:23:09.803 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/element/0.8588246809597988-9/click HTTP/1.1" 200 72
+20190529 12:23:09.803 - DEBUG - Finished Request
+20190529 12:23:09.803 - INFO - +---- END KW: SeleniumLibrary.Click Element (57)
+20190529 12:23:09.804 - INFO - +--- END KW: Booking.Booking.Click Book Now (355)
+20190529 12:23:09.804 - INFO - +-- END KW: BddKeywords.And I can confirm my booking (1353)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+20190529 12:23:09.804 - INFO - +-- START KW: BddKeywords.And I can see my receipt [ Rendezvous Hotels ]
+20190529 12:23:09.805 - INFO - +--- START KW: Invoice.Invoice.Verify Invoice [ ${hotelname} ]
+20190529 12:23:09.806 - INFO - +---- START KW: SeleniumLibrary.Wait Until Page Contains Element [ ${Invoice_PayNow} | 15s ]
+20190529 12:23:09.806 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/elements {"using": "xpath", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "value": "//button[text()=\"Pay Now\"]"}
+20190529 12:23:14.868 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/elements HTTP/1.1" 200 70
+20190529 12:23:14.869 - DEBUG - Finished Request
+20190529 12:23:15.069 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/elements {"using": "xpath", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "value": "//button[text()=\"Pay Now\"]"}
+20190529 12:23:17.265 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/elements HTTP/1.1" 200 139
+20190529 12:23:17.266 - DEBUG - Finished Request
+20190529 12:23:17.266 - INFO - +---- END KW: SeleniumLibrary.Wait Until Page Contains Element (7460)
+20190529 12:23:17.266 - INFO - +---- START KW: SeleniumLibrary.Page Should Contain Element [ xpath=//div[normalize-space()="Unpaid"] ]
+20190529 12:23:17.266 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/elements {"using": "xpath", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "value": "//div[normalize-space()=\"Unpaid\"]"}
+20190529 12:23:17.281 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/elements HTTP/1.1" 200 104
+20190529 12:23:17.281 - DEBUG - Finished Request
+20190529 12:23:17.281 - INFO - Current page contains element 'xpath=//div[normalize-space()="Unpaid"]'.
+20190529 12:23:17.281 - INFO - +---- END KW: SeleniumLibrary.Page Should Contain Element (15)
+20190529 12:23:17.281 - INFO - +---- START KW: SeleniumLibrary.Page Should Contain Element [ xpath=//td[normalize-space()="${hotelname}"] ]
+20190529 12:23:17.282 - DEBUG - POST http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87/elements {"using": "xpath", "sessionId": "4c1bc2a069955f42f34be705165c6d87", "value": "//td[normalize-space()=\"Rendezvous Hotels\"]"}
+20190529 12:23:17.296 - DEBUG - http://127.0.0.1:57463 "POST /session/4c1bc2a069955f42f34be705165c6d87/elements HTTP/1.1" 200 104
+20190529 12:23:17.296 - DEBUG - Finished Request
+20190529 12:23:17.297 - INFO - Current page contains element 'xpath=//td[normalize-space()="Rendezvous Hotels"]'.
+20190529 12:23:17.297 - INFO - +---- END KW: SeleniumLibrary.Page Should Contain Element (16)
+20190529 12:23:17.297 - INFO - +--- END KW: Invoice.Invoice.Verify Invoice (7492)
+20190529 12:23:17.297 - INFO - +-- END KW: BddKeywords.And I can see my receipt (7493)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+20190529 12:23:17.297 - INFO - +-- START TEARDOWN: BaseTest.Base Web Test Tear Down [ ]
+20190529 12:23:17.298 - INFO - +--- START KW: SeleniumLibrary.Close All Browsers [ ]
+20190529 12:23:17.298 - DEBUG - Closing all browsers.
+20190529 12:23:17.298 - DEBUG - DELETE http://127.0.0.1:57463/session/4c1bc2a069955f42f34be705165c6d87 {"sessionId": "4c1bc2a069955f42f34be705165c6d87"}
+20190529 12:23:17.502 - DEBUG - http://127.0.0.1:57463 "DELETE /session/4c1bc2a069955f42f34be705165c6d87 HTTP/1.1" 200 72
+20190529 12:23:17.503 - DEBUG - Finished Request
+20190529 12:23:19.746 - INFO - +--- END KW: SeleniumLibrary.Close All Browsers (2448)
+20190529 12:23:19.746 - INFO - +-- END TEARDOWN: BaseTest.Base Web Test Tear Down (2449)
+------------------------------------------------------------------------------
+20190529 12:23:19.747 - INFO - +- END TEST: TC2: Book a hotel on PHP Travel (37392)
+------------------------------------------------------------------------------
+20190529 12:23:19.748 - INFO - + END SUITE: PHPTravel (53069)
+==============================================================================

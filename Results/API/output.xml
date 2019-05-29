@@ -1,0 +1,2329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot rpa="false" generated="20190529 12:21:29.758" generator="Robot 3.1.1 (Python 2.7.14 on win32)">
+<suite source="C:\Users\PKHPTQ\PycharmProjects\qa-challange\QA-Challange\TestSuites\API\weather-api.robot" id="s1" name="Weather-Api">
+<test id="s1-t1" name="Get Current Temprature for Blacktown based on Postcode">
+<kw name="Get Current Temprature">
+<arguments>
+<arg>2148</arg>
+<arg>${NONE}</arg>
+<arg>${NONE}</arg>
+<arg>${NONE}</arg>
+<arg>Blacktown</arg>
+</arguments>
+<kw name="APIUtilities.Create API Session" library="APIUtilities">
+<doc>Creates a session to a supplied URL with headers and parameters</doc>
+<arguments>
+<arg>${ENVIRONMENT_WEATHERAPI_HOST}</arg>
+</arguments>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>${SESSION}</arg>
+<arg>${URL}</arg>
+<arg>verify=${verify}</arg>
+</arguments>
+<msg timestamp="20190529 12:21:30.637" level="INFO">Creating Session using : alias=APITEST, url=http://api.weatherbit.io/v2.0, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<msg timestamp="20190529 12:21:30.637" level="DEBUG">Creating session: APITEST</msg>
+<msg timestamp="20190529 12:21:30.638" level="DEBUG">Argument types are:
+&lt;type 'bool'&gt;</msg>
+<status status="PASS" endtime="20190529 12:21:30.638" starttime="20190529 12:21:30.637"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:30.638" starttime="20190529 12:21:30.637"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>"${latitude}"!="${NONE}"</arg>
+<arg>APIUtilities.Send Get Request and return dictionary</arg>
+<arg>/current?lat=${latitude}&amp;lon=${longitude}&amp;key=e367790c908944a882a863bd09e642b9</arg>
+<arg>ignoreResponseCode=True</arg>
+<arg>ELSE IF</arg>
+<arg>"${country}"!="${NONE}"</arg>
+<arg>APIUtilities.Send Get Request and return dictionary</arg>
+<arg>${ENVIRONMENT_WEATHERAPI_SERVICE_CURRENT}?postal_code=${postcode}&amp;country=${country}&amp;key=e367790c908944a882a863bd09e642b9</arg>
+<arg>ignoreResponseCode=True</arg>
+<arg>ELSE</arg>
+<arg>APIUtilities.Send Get Request and return dictionary</arg>
+<arg>${ENVIRONMENT_WEATHERAPI_SERVICE_CURRENT}?postal_code=${postcode}&amp;key=e367790c908944a882a863bd09e642b9</arg>
+<arg>ignoreResponseCode=True</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<kw name="APIUtilities.Send Get Request and return dictionary" library="APIUtilities">
+<doc>Sends a get request to the opened session</doc>
+<arguments>
+<arg>${ENVIRONMENT_WEATHERAPI_SERVICE_CURRENT}?postal_code=${postcode}&amp;key=e367790c908944a882a863bd09e642b9</arg>
+<arg>ignoreResponseCode=True</arg>
+</arguments>
+<kw name="APIUtilities.Send Rest Get Request" library="APIUtilities">
+<doc>Sends a get request to the opened session</doc>
+<arguments>
+<arg>${URI}</arg>
+<arg>${HEADERS}</arg>
+<arg>${PARAMS}</arg>
+<arg>${Result}</arg>
+<arg>${ignoreResponseCode}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${SESSION}</arg>
+<arg>${URI}</arg>
+<arg>headers=${HEADERS}</arg>
+<arg>params=${PARAMS}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20190529 12:21:30.651" level="DEBUG">Starting new HTTP connection (1): api.weatherbit.io:80</msg>
+<msg timestamp="20190529 12:21:31.185" level="DEBUG">http://api.weatherbit.io:80 "GET /v2.0/current?postal_code=2148&amp;key=e367790c908944a882a863bd09e642b9 HTTP/1.1" 200 None</msg>
+<msg timestamp="20190529 12:21:31.186" level="INFO">Get Request using : alias=APITEST, uri=/current?postal_code=2148&amp;key=e367790c908944a882a863bd09e642b9, headers=None json=None</msg>
+<msg timestamp="20190529 12:21:31.186" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20190529 12:21:31.186" starttime="20190529 12:21:30.640"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>json: resp.content:: ${resp.content}</arg>
+<arg>level=DEBUG</arg>
+<arg>console=yes</arg>
+</arguments>
+<msg timestamp="20190529 12:21:31.187" level="DEBUG">json: resp.content:: {"data":[{"wind_cdir":"WSW","rh":99,"pod":"n","pres":1005.1,"timezone":"America\/Argentina\/Cordoba","ob_time":"2019-05-29 01:53","country_code":"AR","clouds":0,"ts":1559094780,"solar_rad":0,"state_code":"21","city_name":"El Tr\xc3\xa9bol","wind_spd":0.45,"last_ob_time":"2019-05-29T01:53:00","wind_cdir_full":"west-southwest","slp":1017.2,"vis":10,"lon":-61.4833,"uv":0,"datetime":"2019-05-29:02","h_angle":-90,"dewpt":11.5,"aqi":27,"dhi":0,"wind_dir":248,"elev_angle":-47.96,"ghi":0,"precip":null,"sunrise":"10:54","lat":-32.2056,"weather":{"icon":"c01n","code":"800","description":"Clear sky"},"sunset":"21:12","temp":11.7,"dni":0,"station":"F2816","app_temp":11.7}],"count":1}
+</msg>
+<status status="PASS" endtime="20190529 12:21:31.187" starttime="20190529 12:21:31.186"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${ignoreResponseCode}' == 'False'</arg>
+<arg>should be equal as strings</arg>
+<arg>${resp.status_code}</arg>
+<arg>${Result}</arg>
+</arguments>
+<status status="PASS" endtime="20190529 12:21:31.187" starttime="20190529 12:21:31.187"></status>
+</kw>
+<kw name="To Json" library="RequestsLibrary">
+<doc>Convert a string to a JSON object</doc>
+<arguments>
+<arg>${resp.content}</arg>
+<arg>pretty_print=True</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.188" level="INFO">To JSON using : content={"data":[{"wind_cdir":"WSW","rh":99,"pod":"n","pres":1005.1,"timezone":"America\/Argentina\/Cordoba","ob_time":"2019-05-29 01:53","country_code":"AR","clouds":0,"ts":1559094780,"solar_rad":0,"state_code":"21","city_name":"El Tr\xc3\xa9bol","wind_spd":0.45,"last_ob_time":"2019-05-29T01:53:00","wind_cdir_full":"west-southwest","slp":1017.2,"vis":10,"lon":-61.4833,"uv":0,"datetime":"2019-05-29:02","h_angle":-90,"dewpt":11.5,"aqi":27,"dhi":0,"wind_dir":248,"elev_angle":-47.96,"ghi":0,"precip":null,"sunrise":"10:54","lat":-32.2056,"weather":{"icon":"c01n","code":"800","description":"Clear sky"},"sunset":"21:12","temp":11.7,"dni":0,"station":"F2816","app_temp":11.7}],"count":1}
+ </msg>
+<msg timestamp="20190529 12:21:31.188" level="INFO">To JSON using : pretty_print=True </msg>
+<msg timestamp="20190529 12:21:31.188" level="INFO">${output} = {
+    "count": 1,
+    "data": [
+        {
+            "app_temp": 11.7,
+            "aqi": 27,
+            "city_name": "El Tr\u00e9bol",
+            "clouds": 0,
+            "country_code": "AR",
+   ...</msg>
+<status status="PASS" endtime="20190529 12:21:31.188" starttime="20190529 12:21:31.187"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${output}</arg>
+</arguments>
+<msg timestamp="20190529 12:21:31.188" level="INFO">{
+    "count": 1,
+    "data": [
+        {
+            "app_temp": 11.7,
+            "aqi": 27,
+            "city_name": "El Tr\u00e9bol",
+            "clouds": 0,
+            "country_code": "AR",
+            "datetime": "2019-05-29:02",
+            "dewpt": 11.5,
+            "dhi": 0,
+            "dni": 0,
+            "elev_angle": -47.96,
+            "ghi": 0,
+            "h_angle": -90,
+            "last_ob_time": "2019-05-29T01:53:00",
+            "lat": -32.2056,
+            "lon": -61.4833,
+            "ob_time": "2019-05-29 01:53",
+            "pod": "n",
+            "precip": null,
+            "pres": 1005.1,
+            "rh": 99,
+            "slp": 1017.2,
+            "solar_rad": 0,
+            "state_code": "21",
+            "station": "F2816",
+            "sunrise": "10:54",
+            "sunset": "21:12",
+            "temp": 11.7,
+            "timezone": "America/Argentina/Cordoba",
+            "ts": 1559094780,
+            "uv": 0,
+            "vis": 10,
+            "weather": {
+                "code": "800",
+                "description": "Clear sky",
+                "icon": "c01n"
+            },
+            "wind_cdir": "WSW",
+            "wind_cdir_full": "west-southwest",
+            "wind_dir": 248,
+            "wind_spd": 0.45
+        }
+    ]
+}</msg>
+<status status="PASS" endtime="20190529 12:21:31.189" starttime="20190529 12:21:31.188"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${json}</arg>
+<arg>${output}</arg>
+</arguments>
+<msg timestamp="20190529 12:21:31.189" level="INFO">${json} = {
+    "count": 1,
+    "data": [
+        {
+            "app_temp": 11.7,
+            "aqi": 27,
+            "city_name": "El Tr\u00e9bol",
+            "clouds": 0,
+            "country_code": "AR",
+   ...</msg>
+<status status="PASS" endtime="20190529 12:21:31.189" starttime="20190529 12:21:31.189"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>json.loads(r'''${json}''')</arg>
+<arg>json</arg>
+</arguments>
+<assign>
+<var>${RespDict}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.190" level="INFO">${RespDict} = {u'count': 1, u'data': [{u'dni': 0, u'wind_cdir': u'WSW', u'datetime': u'2019-05-29:02', u'city_name': u'El Tr\xe9bol', u'weather': {u'code': u'800', u'description': u'Clear sky', u'icon': u'c01n'}, u...</msg>
+<status status="PASS" endtime="20190529 12:21:31.190" starttime="20190529 12:21:31.189"></status>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<arguments>
+<arg>${json}</arg>
+</arguments>
+<assign>
+<var>${ReturnLength}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.190" level="INFO">Length is 1283</msg>
+<msg timestamp="20190529 12:21:31.190" level="INFO">${ReturnLength} = 1283</msg>
+<status status="PASS" endtime="20190529 12:21:31.190" starttime="20190529 12:21:31.190"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>${ReturnLength} &gt; 2</arg>
+</arguments>
+<assign>
+<var>${CheckLength}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.191" level="INFO">${CheckLength} = True</msg>
+<status status="PASS" endtime="20190529 12:21:31.191" starttime="20190529 12:21:31.190"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${CheckLength}</arg>
+</arguments>
+<status status="PASS" endtime="20190529 12:21:31.191" starttime="20190529 12:21:31.191"></status>
+</kw>
+<msg timestamp="20190529 12:21:31.191" level="INFO">${response} = {u'count': 1, u'data': [{u'dni': 0, u'wind_cdir': u'WSW', u'datetime': u'2019-05-29:02', u'city_name': u'El Tr\xe9bol', u'weather': {u'code': u'800', u'description': u'Clear sky', u'icon': u'c01n'}, u...</msg>
+<status status="PASS" endtime="20190529 12:21:31.191" starttime="20190529 12:21:30.640"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:31.191" starttime="20190529 12:21:30.639"></status>
+</kw>
+<msg timestamp="20190529 12:21:31.192" level="INFO">${response} = {u'count': 1, u'data': [{u'dni': 0, u'wind_cdir': u'WSW', u'datetime': u'2019-05-29:02', u'city_name': u'El Tr\xe9bol', u'weather': {u'code': u'800', u'description': u'Clear sky', u'icon': u'c01n'}, u...</msg>
+<status status="PASS" endtime="20190529 12:21:31.192" starttime="20190529 12:21:30.638"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>data</arg>
+<arg>temp</arg>
+</arguments>
+<assign>
+<var>${keypath_tempreture}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.192" level="INFO">${keypath_tempreture} = [u'data', u'temp']</msg>
+<status status="PASS" endtime="20190529 12:21:31.192" starttime="20190529 12:21:31.192"></status>
+</kw>
+<kw name="DictionaryUtilities.getValueByKeyPath" library="DictionaryUtilites">
+<doc>This function takes 2 arguments - a dictionary object and a list of keys. The list of keys is read
+in a sequential manner to go down the path and find the key.</doc>
+<arguments>
+<arg>${response}</arg>
+<arg>${keypath_tempreture}</arg>
+</arguments>
+<assign>
+<var>${tempreture}</var>
+</assign>
+<kw name="Get Length" library="BuiltIn">
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<arguments>
+<arg>${list_key_path}</arg>
+</arguments>
+<assign>
+<var>${length}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.193" level="INFO">Length is 2</msg>
+<msg timestamp="20190529 12:21:31.193" level="INFO">${length} = 2</msg>
+<status status="PASS" endtime="20190529 12:21:31.193" starttime="20190529 12:21:31.192"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${dict_to_parse}</arg>
+</arguments>
+<assign>
+<var>${dict_temp}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.193" level="INFO">${dict_temp} = {u'count': 1, u'data': [{u'dni': 0, u'wind_cdir': u'WSW', u'datetime': u'2019-05-29:02', u'city_name': u'El Tr\xe9bol', u'weather': {u'code': u'800', u'description': u'Clear sky', u'icon': u'c01n'}, u...</msg>
+<status status="PASS" endtime="20190529 12:21:31.193" starttime="20190529 12:21:31.193"></status>
+</kw>
+<kw type="for" name="${index} IN RANGE [ 0 | ${length} ]">
+<kw type="foritem" name="${index} = 0">
+<kw name="Get From List" library="Collections">
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<arguments>
+<arg>${list_key_path}</arg>
+<arg>${index}</arg>
+</arguments>
+<assign>
+<var>${key}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.194" level="INFO">${key} = data</msg>
+<status status="PASS" endtime="20190529 12:21:31.194" starttime="20190529 12:21:31.193"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>type(${dict_temp})</arg>
+</arguments>
+<assign>
+<var>${dict_temp_type}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.194" level="INFO">${dict_temp_type} = &lt;type 'dict'&gt;</msg>
+<status status="PASS" endtime="20190529 12:21:31.194" starttime="20190529 12:21:31.194"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>"${dict_temp_type}" == "&lt;type 'list'&gt;"</arg>
+<arg>DictionaryUtilities.GetValueFromListOfCommonDictionaries</arg>
+<arg>${dict_temp}</arg>
+<arg>${key}</arg>
+<arg>ELSE</arg>
+<arg>get variable value</arg>
+<arg>${dict_temp['${key}']}</arg>
+</arguments>
+<assign>
+<var>${dict_temp}</var>
+</assign>
+<kw name="Get Variable Value" library="BuiltIn">
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<arguments>
+<arg>${dict_temp['${key}']}</arg>
+</arguments>
+<status status="PASS" endtime="20190529 12:21:31.195" starttime="20190529 12:21:31.195"></status>
+</kw>
+<msg timestamp="20190529 12:21:31.196" level="INFO">${dict_temp} = [{u'dni': 0, u'wind_cdir': u'WSW', u'datetime': u'2019-05-29:02', u'city_name': u'El Tr\xe9bol', u'weather': {u'code': u'800', u'description': u'Clear sky', u'icon': u'c01n'}, u'country_code': u'AR', ...</msg>
+<status status="PASS" endtime="20190529 12:21:31.196" starttime="20190529 12:21:31.195"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:31.196" starttime="20190529 12:21:31.193"></status>
+</kw>
+<kw type="foritem" name="${index} = 1">
+<kw name="Get From List" library="Collections">
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<arguments>
+<arg>${list_key_path}</arg>
+<arg>${index}</arg>
+</arguments>
+<assign>
+<var>${key}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.196" level="INFO">${key} = temp</msg>
+<status status="PASS" endtime="20190529 12:21:31.196" starttime="20190529 12:21:31.196"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>type(${dict_temp})</arg>
+</arguments>
+<assign>
+<var>${dict_temp_type}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.197" level="INFO">${dict_temp_type} = &lt;type 'list'&gt;</msg>
+<status status="PASS" endtime="20190529 12:21:31.197" starttime="20190529 12:21:31.196"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>"${dict_temp_type}" == "&lt;type 'list'&gt;"</arg>
+<arg>DictionaryUtilities.GetValueFromListOfCommonDictionaries</arg>
+<arg>${dict_temp}</arg>
+<arg>${key}</arg>
+<arg>ELSE</arg>
+<arg>get variable value</arg>
+<arg>${dict_temp['${key}']}</arg>
+</arguments>
+<assign>
+<var>${dict_temp}</var>
+</assign>
+<kw name="DictionaryUtilities.GetValueFromListOfCommonDictionaries" library="DictionaryUtilites">
+<doc>This is a private keyword and should not be used. This keyword is used by
+This keyword gets a specific key value in a list that has common dictionaries</doc>
+<arguments>
+<arg>${dict_temp}</arg>
+<arg>${key}</arg>
+</arguments>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${False}</arg>
+</arguments>
+<assign>
+<var>${matchFlag}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.198" level="INFO">${matchFlag} = False</msg>
+<status status="PASS" endtime="20190529 12:21:31.198" starttime="20190529 12:21:31.198"></status>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<arguments>
+<arg>${tempDictionary}</arg>
+</arguments>
+<assign>
+<var>${length}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.198" level="INFO">Length is 1</msg>
+<msg timestamp="20190529 12:21:31.199" level="INFO">${length} = 1</msg>
+<status status="PASS" endtime="20190529 12:21:31.199" starttime="20190529 12:21:31.198"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${None}</arg>
+</arguments>
+<assign>
+<var>${extractedValue}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.199" level="INFO">${extractedValue} = None</msg>
+<status status="PASS" endtime="20190529 12:21:31.199" starttime="20190529 12:21:31.199"></status>
+</kw>
+<kw name="Run Keyword And Return If" library="BuiltIn">
+<doc>Runs the specified keyword and returns from the enclosing user keyword.</doc>
+<arguments>
+<arg>"${key}" == "first"</arg>
+<arg>${tempDictionary[0]}</arg>
+</arguments>
+<status status="PASS" endtime="20190529 12:21:31.200" starttime="20190529 12:21:31.199"></status>
+</kw>
+<kw type="for" name="${index} IN RANGE [ 0 | ${length} ]">
+<kw type="foritem" name="${index} = 0">
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${tempDictionary[${index}]}</arg>
+</arguments>
+<assign>
+<var>${tempDict}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.200" level="INFO">${tempDict} = {u'dni': 0, u'wind_cdir': u'WSW', u'datetime': u'2019-05-29:02', u'city_name': u'El Tr\xe9bol', u'weather': {u'code': u'800', u'description': u'Clear sky', u'icon': u'c01n'}, u'country_code': u'AR', u...</msg>
+<status status="PASS" endtime="20190529 12:21:31.200" starttime="20190529 12:21:31.200"></status>
+</kw>
+<kw name="Get Variable Value" library="BuiltIn">
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<arguments>
+<arg>${tempDict["${key}"]}</arg>
+</arguments>
+<assign>
+<var>${extractedValue}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.201" level="INFO">${extractedValue} = 11.7</msg>
+<status status="PASS" endtime="20190529 12:21:31.201" starttime="20190529 12:21:31.200"></status>
+</kw>
+<kw name="Continue For Loop If" library="BuiltIn">
+<doc>Skips the current for loop iteration if the ``condition`` is true.</doc>
+<arguments>
+<arg>'${extractedValue}' == '${None}'</arg>
+</arguments>
+<status status="PASS" endtime="20190529 12:21:31.201" starttime="20190529 12:21:31.201"></status>
+</kw>
+<kw name="Run Keyword Unless" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments if ``condition`` is false.</doc>
+<arguments>
+<arg>"${extractedValue}" == "None"</arg>
+<arg>exit for loop</arg>
+</arguments>
+<kw name="Exit For Loop" library="BuiltIn">
+<doc>Stops executing the enclosing for loop.</doc>
+<msg timestamp="20190529 12:21:31.202" level="INFO">Exiting for loop altogether.</msg>
+<status status="PASS" endtime="20190529 12:21:31.202" starttime="20190529 12:21:31.202"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:31.202" starttime="20190529 12:21:31.201"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:31.202" starttime="20190529 12:21:31.200"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:31.202" starttime="20190529 12:21:31.200"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:31.202" starttime="20190529 12:21:31.197"></status>
+</kw>
+<msg timestamp="20190529 12:21:31.202" level="INFO">${dict_temp} = 11.7</msg>
+<status status="PASS" endtime="20190529 12:21:31.202" starttime="20190529 12:21:31.197"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:31.202" starttime="20190529 12:21:31.196"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:31.202" starttime="20190529 12:21:31.193"></status>
+</kw>
+<msg timestamp="20190529 12:21:31.203" level="INFO">${tempreture} = 11.7</msg>
+<status status="PASS" endtime="20190529 12:21:31.203" starttime="20190529 12:21:31.192"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Current Temprature: ${tempreture}</arg>
+</arguments>
+<msg timestamp="20190529 12:21:31.203" level="INFO">Current Temprature: 11.7</msg>
+<status status="PASS" endtime="20190529 12:21:31.203" starttime="20190529 12:21:31.203"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>data</arg>
+<arg>city_name</arg>
+</arguments>
+<assign>
+<var>${keypath_city}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.204" level="INFO">${keypath_city} = [u'data', u'city_name']</msg>
+<status status="PASS" endtime="20190529 12:21:31.204" starttime="20190529 12:21:31.203"></status>
+</kw>
+<kw name="DictionaryUtilities.getValueByKeyPath" library="DictionaryUtilites">
+<doc>This function takes 2 arguments - a dictionary object and a list of keys. The list of keys is read
+in a sequential manner to go down the path and find the key.</doc>
+<arguments>
+<arg>${response}</arg>
+<arg>${keypath_city}</arg>
+</arguments>
+<assign>
+<var>${response_city}</var>
+</assign>
+<kw name="Get Length" library="BuiltIn">
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<arguments>
+<arg>${list_key_path}</arg>
+</arguments>
+<assign>
+<var>${length}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.204" level="INFO">Length is 2</msg>
+<msg timestamp="20190529 12:21:31.204" level="INFO">${length} = 2</msg>
+<status status="PASS" endtime="20190529 12:21:31.205" starttime="20190529 12:21:31.204"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${dict_to_parse}</arg>
+</arguments>
+<assign>
+<var>${dict_temp}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.205" level="INFO">${dict_temp} = {u'count': 1, u'data': [{u'dni': 0, u'wind_cdir': u'WSW', u'datetime': u'2019-05-29:02', u'city_name': u'El Tr\xe9bol', u'weather': {u'code': u'800', u'description': u'Clear sky', u'icon': u'c01n'}, u...</msg>
+<status status="PASS" endtime="20190529 12:21:31.205" starttime="20190529 12:21:31.205"></status>
+</kw>
+<kw type="for" name="${index} IN RANGE [ 0 | ${length} ]">
+<kw type="foritem" name="${index} = 0">
+<kw name="Get From List" library="Collections">
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<arguments>
+<arg>${list_key_path}</arg>
+<arg>${index}</arg>
+</arguments>
+<assign>
+<var>${key}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.206" level="INFO">${key} = data</msg>
+<status status="PASS" endtime="20190529 12:21:31.206" starttime="20190529 12:21:31.205"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>type(${dict_temp})</arg>
+</arguments>
+<assign>
+<var>${dict_temp_type}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.206" level="INFO">${dict_temp_type} = &lt;type 'dict'&gt;</msg>
+<status status="PASS" endtime="20190529 12:21:31.206" starttime="20190529 12:21:31.206"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>"${dict_temp_type}" == "&lt;type 'list'&gt;"</arg>
+<arg>DictionaryUtilities.GetValueFromListOfCommonDictionaries</arg>
+<arg>${dict_temp}</arg>
+<arg>${key}</arg>
+<arg>ELSE</arg>
+<arg>get variable value</arg>
+<arg>${dict_temp['${key}']}</arg>
+</arguments>
+<assign>
+<var>${dict_temp}</var>
+</assign>
+<kw name="Get Variable Value" library="BuiltIn">
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<arguments>
+<arg>${dict_temp['${key}']}</arg>
+</arguments>
+<status status="PASS" endtime="20190529 12:21:31.207" starttime="20190529 12:21:31.207"></status>
+</kw>
+<msg timestamp="20190529 12:21:31.207" level="INFO">${dict_temp} = [{u'dni': 0, u'wind_cdir': u'WSW', u'datetime': u'2019-05-29:02', u'city_name': u'El Tr\xe9bol', u'weather': {u'code': u'800', u'description': u'Clear sky', u'icon': u'c01n'}, u'country_code': u'AR', ...</msg>
+<status status="PASS" endtime="20190529 12:21:31.207" starttime="20190529 12:21:31.206"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:31.207" starttime="20190529 12:21:31.205"></status>
+</kw>
+<kw type="foritem" name="${index} = 1">
+<kw name="Get From List" library="Collections">
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<arguments>
+<arg>${list_key_path}</arg>
+<arg>${index}</arg>
+</arguments>
+<assign>
+<var>${key}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.208" level="INFO">${key} = city_name</msg>
+<status status="PASS" endtime="20190529 12:21:31.208" starttime="20190529 12:21:31.208"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>type(${dict_temp})</arg>
+</arguments>
+<assign>
+<var>${dict_temp_type}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.208" level="INFO">${dict_temp_type} = &lt;type 'list'&gt;</msg>
+<status status="PASS" endtime="20190529 12:21:31.209" starttime="20190529 12:21:31.208"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>"${dict_temp_type}" == "&lt;type 'list'&gt;"</arg>
+<arg>DictionaryUtilities.GetValueFromListOfCommonDictionaries</arg>
+<arg>${dict_temp}</arg>
+<arg>${key}</arg>
+<arg>ELSE</arg>
+<arg>get variable value</arg>
+<arg>${dict_temp['${key}']}</arg>
+</arguments>
+<assign>
+<var>${dict_temp}</var>
+</assign>
+<kw name="DictionaryUtilities.GetValueFromListOfCommonDictionaries" library="DictionaryUtilites">
+<doc>This is a private keyword and should not be used. This keyword is used by
+This keyword gets a specific key value in a list that has common dictionaries</doc>
+<arguments>
+<arg>${dict_temp}</arg>
+<arg>${key}</arg>
+</arguments>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${False}</arg>
+</arguments>
+<assign>
+<var>${matchFlag}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.210" level="INFO">${matchFlag} = False</msg>
+<status status="PASS" endtime="20190529 12:21:31.210" starttime="20190529 12:21:31.209"></status>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<arguments>
+<arg>${tempDictionary}</arg>
+</arguments>
+<assign>
+<var>${length}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.210" level="INFO">Length is 1</msg>
+<msg timestamp="20190529 12:21:31.210" level="INFO">${length} = 1</msg>
+<status status="PASS" endtime="20190529 12:21:31.210" starttime="20190529 12:21:31.210"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${None}</arg>
+</arguments>
+<assign>
+<var>${extractedValue}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.210" level="INFO">${extractedValue} = None</msg>
+<status status="PASS" endtime="20190529 12:21:31.210" starttime="20190529 12:21:31.210"></status>
+</kw>
+<kw name="Run Keyword And Return If" library="BuiltIn">
+<doc>Runs the specified keyword and returns from the enclosing user keyword.</doc>
+<arguments>
+<arg>"${key}" == "first"</arg>
+<arg>${tempDictionary[0]}</arg>
+</arguments>
+<status status="PASS" endtime="20190529 12:21:31.211" starttime="20190529 12:21:31.211"></status>
+</kw>
+<kw type="for" name="${index} IN RANGE [ 0 | ${length} ]">
+<kw type="foritem" name="${index} = 0">
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${tempDictionary[${index}]}</arg>
+</arguments>
+<assign>
+<var>${tempDict}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.212" level="INFO">${tempDict} = {u'dni': 0, u'wind_cdir': u'WSW', u'datetime': u'2019-05-29:02', u'city_name': u'El Tr\xe9bol', u'weather': {u'code': u'800', u'description': u'Clear sky', u'icon': u'c01n'}, u'country_code': u'AR', u...</msg>
+<status status="PASS" endtime="20190529 12:21:31.212" starttime="20190529 12:21:31.211"></status>
+</kw>
+<kw name="Get Variable Value" library="BuiltIn">
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<arguments>
+<arg>${tempDict["${key}"]}</arg>
+</arguments>
+<assign>
+<var>${extractedValue}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.212" level="INFO">${extractedValue} = El Trébol</msg>
+<status status="PASS" endtime="20190529 12:21:31.212" starttime="20190529 12:21:31.212"></status>
+</kw>
+<kw name="Continue For Loop If" library="BuiltIn">
+<doc>Skips the current for loop iteration if the ``condition`` is true.</doc>
+<arguments>
+<arg>'${extractedValue}' == '${None}'</arg>
+</arguments>
+<status status="PASS" endtime="20190529 12:21:31.213" starttime="20190529 12:21:31.212"></status>
+</kw>
+<kw name="Run Keyword Unless" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments if ``condition`` is false.</doc>
+<arguments>
+<arg>"${extractedValue}" == "None"</arg>
+<arg>exit for loop</arg>
+</arguments>
+<kw name="Exit For Loop" library="BuiltIn">
+<doc>Stops executing the enclosing for loop.</doc>
+<msg timestamp="20190529 12:21:31.213" level="INFO">Exiting for loop altogether.</msg>
+<status status="PASS" endtime="20190529 12:21:31.213" starttime="20190529 12:21:31.213"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:31.213" starttime="20190529 12:21:31.213"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:31.213" starttime="20190529 12:21:31.211"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:31.214" starttime="20190529 12:21:31.211"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:31.214" starttime="20190529 12:21:31.209"></status>
+</kw>
+<msg timestamp="20190529 12:21:31.214" level="INFO">${dict_temp} = El Trébol</msg>
+<status status="PASS" endtime="20190529 12:21:31.214" starttime="20190529 12:21:31.209"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:31.214" starttime="20190529 12:21:31.207"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:31.214" starttime="20190529 12:21:31.205"></status>
+</kw>
+<msg timestamp="20190529 12:21:31.214" level="INFO">${response_city} = El Trébol</msg>
+<status status="PASS" endtime="20190529 12:21:31.214" starttime="20190529 12:21:31.204"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>City: ${response_city}</arg>
+</arguments>
+<msg timestamp="20190529 12:21:31.214" level="INFO">City: El Trébol</msg>
+<status status="PASS" endtime="20190529 12:21:31.215" starttime="20190529 12:21:31.214"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${request_city}</arg>
+<arg>${response_city}</arg>
+</arguments>
+<msg timestamp="20190529 12:21:31.215" level="DEBUG">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'unicode'&gt;</msg>
+<msg timestamp="20190529 12:21:31.215" level="FAIL">Blacktown != El Trébol</msg>
+<msg timestamp="20190529 12:21:31.215" level="DEBUG">Traceback (most recent call last):
+  None</msg>
+<status status="FAIL" endtime="20190529 12:21:31.215" starttime="20190529 12:21:31.215"></status>
+</kw>
+<status status="FAIL" endtime="20190529 12:21:31.215" starttime="20190529 12:21:30.636"></status>
+</kw>
+<status status="FAIL" endtime="20190529 12:21:31.215" critical="yes" starttime="20190529 12:21:30.636">Blacktown != El Trébol</status>
+</test>
+<test id="s1-t2" name="Get Current Temprature for Blacktown based on Postcode and Country">
+<kw name="Get Current Temprature">
+<arguments>
+<arg>2000</arg>
+<arg>${NONE}</arg>
+<arg>${NONE}</arg>
+<arg>AU</arg>
+<arg>Milsons Point</arg>
+</arguments>
+<kw name="APIUtilities.Create API Session" library="APIUtilities">
+<doc>Creates a session to a supplied URL with headers and parameters</doc>
+<arguments>
+<arg>${ENVIRONMENT_WEATHERAPI_HOST}</arg>
+</arguments>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>${SESSION}</arg>
+<arg>${URL}</arg>
+<arg>verify=${verify}</arg>
+</arguments>
+<msg timestamp="20190529 12:21:31.217" level="INFO">Creating Session using : alias=APITEST, url=http://api.weatherbit.io/v2.0, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<msg timestamp="20190529 12:21:31.217" level="DEBUG">Creating session: APITEST</msg>
+<msg timestamp="20190529 12:21:31.218" level="DEBUG">Argument types are:
+&lt;type 'bool'&gt;</msg>
+<status status="PASS" endtime="20190529 12:21:31.218" starttime="20190529 12:21:31.217"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:31.218" starttime="20190529 12:21:31.217"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>"${latitude}"!="${NONE}"</arg>
+<arg>APIUtilities.Send Get Request and return dictionary</arg>
+<arg>/current?lat=${latitude}&amp;lon=${longitude}&amp;key=e367790c908944a882a863bd09e642b9</arg>
+<arg>ignoreResponseCode=True</arg>
+<arg>ELSE IF</arg>
+<arg>"${country}"!="${NONE}"</arg>
+<arg>APIUtilities.Send Get Request and return dictionary</arg>
+<arg>${ENVIRONMENT_WEATHERAPI_SERVICE_CURRENT}?postal_code=${postcode}&amp;country=${country}&amp;key=e367790c908944a882a863bd09e642b9</arg>
+<arg>ignoreResponseCode=True</arg>
+<arg>ELSE</arg>
+<arg>APIUtilities.Send Get Request and return dictionary</arg>
+<arg>${ENVIRONMENT_WEATHERAPI_SERVICE_CURRENT}?postal_code=${postcode}&amp;key=e367790c908944a882a863bd09e642b9</arg>
+<arg>ignoreResponseCode=True</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<kw name="APIUtilities.Send Get Request and return dictionary" library="APIUtilities">
+<doc>Sends a get request to the opened session</doc>
+<arguments>
+<arg>${ENVIRONMENT_WEATHERAPI_SERVICE_CURRENT}?postal_code=${postcode}&amp;country=${country}&amp;key=e367790c908944a882a863bd09e642b9</arg>
+<arg>ignoreResponseCode=True</arg>
+</arguments>
+<kw name="APIUtilities.Send Rest Get Request" library="APIUtilities">
+<doc>Sends a get request to the opened session</doc>
+<arguments>
+<arg>${URI}</arg>
+<arg>${HEADERS}</arg>
+<arg>${PARAMS}</arg>
+<arg>${Result}</arg>
+<arg>${ignoreResponseCode}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${SESSION}</arg>
+<arg>${URI}</arg>
+<arg>headers=${HEADERS}</arg>
+<arg>params=${PARAMS}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.223" level="DEBUG">Starting new HTTP connection (1): api.weatherbit.io:80</msg>
+<msg timestamp="20190529 12:21:31.751" level="DEBUG">http://api.weatherbit.io:80 "GET /v2.0/current?postal_code=2000&amp;country=AU&amp;key=e367790c908944a882a863bd09e642b9 HTTP/1.1" 200 None</msg>
+<msg timestamp="20190529 12:21:31.751" level="INFO">Get Request using : alias=APITEST, uri=/current?postal_code=2000&amp;country=AU&amp;key=e367790c908944a882a863bd09e642b9, headers=None json=None</msg>
+<msg timestamp="20190529 12:21:31.751" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20190529 12:21:31.751" starttime="20190529 12:21:31.221"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>json: resp.content:: ${resp.content}</arg>
+<arg>level=DEBUG</arg>
+<arg>console=yes</arg>
+</arguments>
+<msg timestamp="20190529 12:21:31.752" level="DEBUG">json: resp.content:: {"data":[{"wind_cdir":"W","rh":42,"pod":"d","pres":990.2,"timezone":"Australia\/Sydney","ob_time":"2019-05-29 01:55","country_code":"AU","clouds":0,"ts":1559094900,"solar_rad":517,"state_code":"02","city_name":"Milsons Point","wind_spd":0.89,"last_ob_time":"2019-05-29T01:55:00","wind_cdir_full":"west","slp":998.3,"vis":10,"lon":151.2077,"uv":6.02175,"datetime":"2019-05-29:02","h_angle":18,"dewpt":6.2,"aqi":29,"dhi":95.53,"wind_dir":280,"elev_angle":33.1,"ghi":517.02,"precip":null,"sunrise":"20:49","lat":-33.8561,"weather":{"icon":"c01d","code":"800","description":"Clear sky"},"sunset":"06:55","temp":19.4,"dni":783.37,"station":"D5330","app_temp":18.6}],"count":1}
+</msg>
+<status status="PASS" endtime="20190529 12:21:31.752" starttime="20190529 12:21:31.752"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${ignoreResponseCode}' == 'False'</arg>
+<arg>should be equal as strings</arg>
+<arg>${resp.status_code}</arg>
+<arg>${Result}</arg>
+</arguments>
+<status status="PASS" endtime="20190529 12:21:31.753" starttime="20190529 12:21:31.752"></status>
+</kw>
+<kw name="To Json" library="RequestsLibrary">
+<doc>Convert a string to a JSON object</doc>
+<arguments>
+<arg>${resp.content}</arg>
+<arg>pretty_print=True</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.754" level="INFO">To JSON using : content={"data":[{"wind_cdir":"W","rh":42,"pod":"d","pres":990.2,"timezone":"Australia\/Sydney","ob_time":"2019-05-29 01:55","country_code":"AU","clouds":0,"ts":1559094900,"solar_rad":517,"state_code":"02","city_name":"Milsons Point","wind_spd":0.89,"last_ob_time":"2019-05-29T01:55:00","wind_cdir_full":"west","slp":998.3,"vis":10,"lon":151.2077,"uv":6.02175,"datetime":"2019-05-29:02","h_angle":18,"dewpt":6.2,"aqi":29,"dhi":95.53,"wind_dir":280,"elev_angle":33.1,"ghi":517.02,"precip":null,"sunrise":"20:49","lat":-33.8561,"weather":{"icon":"c01d","code":"800","description":"Clear sky"},"sunset":"06:55","temp":19.4,"dni":783.37,"station":"D5330","app_temp":18.6}],"count":1}
+ </msg>
+<msg timestamp="20190529 12:21:31.754" level="INFO">To JSON using : pretty_print=True </msg>
+<msg timestamp="20190529 12:21:31.754" level="INFO">${output} = {
+    "count": 1,
+    "data": [
+        {
+            "app_temp": 18.6,
+            "aqi": 29,
+            "city_name": "Milsons Point",
+            "clouds": 0,
+            "country_code": "AU",
+    ...</msg>
+<status status="PASS" endtime="20190529 12:21:31.754" starttime="20190529 12:21:31.753"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${output}</arg>
+</arguments>
+<msg timestamp="20190529 12:21:31.755" level="INFO">{
+    "count": 1,
+    "data": [
+        {
+            "app_temp": 18.6,
+            "aqi": 29,
+            "city_name": "Milsons Point",
+            "clouds": 0,
+            "country_code": "AU",
+            "datetime": "2019-05-29:02",
+            "dewpt": 6.2,
+            "dhi": 95.53,
+            "dni": 783.37,
+            "elev_angle": 33.1,
+            "ghi": 517.02,
+            "h_angle": 18,
+            "last_ob_time": "2019-05-29T01:55:00",
+            "lat": -33.8561,
+            "lon": 151.2077,
+            "ob_time": "2019-05-29 01:55",
+            "pod": "d",
+            "precip": null,
+            "pres": 990.2,
+            "rh": 42,
+            "slp": 998.3,
+            "solar_rad": 517,
+            "state_code": "02",
+            "station": "D5330",
+            "sunrise": "20:49",
+            "sunset": "06:55",
+            "temp": 19.4,
+            "timezone": "Australia/Sydney",
+            "ts": 1559094900,
+            "uv": 6.02175,
+            "vis": 10,
+            "weather": {
+                "code": "800",
+                "description": "Clear sky",
+                "icon": "c01d"
+            },
+            "wind_cdir": "W",
+            "wind_cdir_full": "west",
+            "wind_dir": 280,
+            "wind_spd": 0.89
+        }
+    ]
+}</msg>
+<status status="PASS" endtime="20190529 12:21:31.755" starttime="20190529 12:21:31.754"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${json}</arg>
+<arg>${output}</arg>
+</arguments>
+<msg timestamp="20190529 12:21:31.755" level="INFO">${json} = {
+    "count": 1,
+    "data": [
+        {
+            "app_temp": 18.6,
+            "aqi": 29,
+            "city_name": "Milsons Point",
+            "clouds": 0,
+            "country_code": "AU",
+    ...</msg>
+<status status="PASS" endtime="20190529 12:21:31.755" starttime="20190529 12:21:31.755"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>json.loads(r'''${json}''')</arg>
+<arg>json</arg>
+</arguments>
+<assign>
+<var>${RespDict}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.756" level="INFO">${RespDict} = {u'count': 1, u'data': [{u'dni': 783.37, u'wind_cdir': u'W', u'datetime': u'2019-05-29:02', u'city_name': u'Milsons Point', u'weather': {u'code': u'800', u'description': u'Clear sky', u'icon': u'c01d'...</msg>
+<status status="PASS" endtime="20190529 12:21:31.756" starttime="20190529 12:21:31.755"></status>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<arguments>
+<arg>${json}</arg>
+</arguments>
+<assign>
+<var>${ReturnLength}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.756" level="INFO">Length is 1277</msg>
+<msg timestamp="20190529 12:21:31.756" level="INFO">${ReturnLength} = 1277</msg>
+<status status="PASS" endtime="20190529 12:21:31.756" starttime="20190529 12:21:31.756"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>${ReturnLength} &gt; 2</arg>
+</arguments>
+<assign>
+<var>${CheckLength}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.757" level="INFO">${CheckLength} = True</msg>
+<status status="PASS" endtime="20190529 12:21:31.757" starttime="20190529 12:21:31.756"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${CheckLength}</arg>
+</arguments>
+<status status="PASS" endtime="20190529 12:21:31.757" starttime="20190529 12:21:31.757"></status>
+</kw>
+<msg timestamp="20190529 12:21:31.757" level="INFO">${response} = {u'count': 1, u'data': [{u'dni': 783.37, u'wind_cdir': u'W', u'datetime': u'2019-05-29:02', u'city_name': u'Milsons Point', u'weather': {u'code': u'800', u'description': u'Clear sky', u'icon': u'c01d'...</msg>
+<status status="PASS" endtime="20190529 12:21:31.757" starttime="20190529 12:21:31.220"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:31.757" starttime="20190529 12:21:31.219"></status>
+</kw>
+<msg timestamp="20190529 12:21:31.757" level="INFO">${response} = {u'count': 1, u'data': [{u'dni': 783.37, u'wind_cdir': u'W', u'datetime': u'2019-05-29:02', u'city_name': u'Milsons Point', u'weather': {u'code': u'800', u'description': u'Clear sky', u'icon': u'c01d'...</msg>
+<status status="PASS" endtime="20190529 12:21:31.757" starttime="20190529 12:21:31.218"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>data</arg>
+<arg>temp</arg>
+</arguments>
+<assign>
+<var>${keypath_tempreture}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.758" level="INFO">${keypath_tempreture} = [u'data', u'temp']</msg>
+<status status="PASS" endtime="20190529 12:21:31.758" starttime="20190529 12:21:31.758"></status>
+</kw>
+<kw name="DictionaryUtilities.getValueByKeyPath" library="DictionaryUtilites">
+<doc>This function takes 2 arguments - a dictionary object and a list of keys. The list of keys is read
+in a sequential manner to go down the path and find the key.</doc>
+<arguments>
+<arg>${response}</arg>
+<arg>${keypath_tempreture}</arg>
+</arguments>
+<assign>
+<var>${tempreture}</var>
+</assign>
+<kw name="Get Length" library="BuiltIn">
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<arguments>
+<arg>${list_key_path}</arg>
+</arguments>
+<assign>
+<var>${length}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.759" level="INFO">Length is 2</msg>
+<msg timestamp="20190529 12:21:31.759" level="INFO">${length} = 2</msg>
+<status status="PASS" endtime="20190529 12:21:31.759" starttime="20190529 12:21:31.758"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${dict_to_parse}</arg>
+</arguments>
+<assign>
+<var>${dict_temp}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.759" level="INFO">${dict_temp} = {u'count': 1, u'data': [{u'dni': 783.37, u'wind_cdir': u'W', u'datetime': u'2019-05-29:02', u'city_name': u'Milsons Point', u'weather': {u'code': u'800', u'description': u'Clear sky', u'icon': u'c01d'...</msg>
+<status status="PASS" endtime="20190529 12:21:31.759" starttime="20190529 12:21:31.759"></status>
+</kw>
+<kw type="for" name="${index} IN RANGE [ 0 | ${length} ]">
+<kw type="foritem" name="${index} = 0">
+<kw name="Get From List" library="Collections">
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<arguments>
+<arg>${list_key_path}</arg>
+<arg>${index}</arg>
+</arguments>
+<assign>
+<var>${key}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.760" level="INFO">${key} = data</msg>
+<status status="PASS" endtime="20190529 12:21:31.760" starttime="20190529 12:21:31.759"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>type(${dict_temp})</arg>
+</arguments>
+<assign>
+<var>${dict_temp_type}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.760" level="INFO">${dict_temp_type} = &lt;type 'dict'&gt;</msg>
+<status status="PASS" endtime="20190529 12:21:31.760" starttime="20190529 12:21:31.760"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>"${dict_temp_type}" == "&lt;type 'list'&gt;"</arg>
+<arg>DictionaryUtilities.GetValueFromListOfCommonDictionaries</arg>
+<arg>${dict_temp}</arg>
+<arg>${key}</arg>
+<arg>ELSE</arg>
+<arg>get variable value</arg>
+<arg>${dict_temp['${key}']}</arg>
+</arguments>
+<assign>
+<var>${dict_temp}</var>
+</assign>
+<kw name="Get Variable Value" library="BuiltIn">
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<arguments>
+<arg>${dict_temp['${key}']}</arg>
+</arguments>
+<status status="PASS" endtime="20190529 12:21:31.761" starttime="20190529 12:21:31.761"></status>
+</kw>
+<msg timestamp="20190529 12:21:31.761" level="INFO">${dict_temp} = [{u'dni': 783.37, u'wind_cdir': u'W', u'datetime': u'2019-05-29:02', u'city_name': u'Milsons Point', u'weather': {u'code': u'800', u'description': u'Clear sky', u'icon': u'c01d'}, u'country_code': u'A...</msg>
+<status status="PASS" endtime="20190529 12:21:31.761" starttime="20190529 12:21:31.760"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:31.761" starttime="20190529 12:21:31.759"></status>
+</kw>
+<kw type="foritem" name="${index} = 1">
+<kw name="Get From List" library="Collections">
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<arguments>
+<arg>${list_key_path}</arg>
+<arg>${index}</arg>
+</arguments>
+<assign>
+<var>${key}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.762" level="INFO">${key} = temp</msg>
+<status status="PASS" endtime="20190529 12:21:31.762" starttime="20190529 12:21:31.762"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>type(${dict_temp})</arg>
+</arguments>
+<assign>
+<var>${dict_temp_type}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.762" level="INFO">${dict_temp_type} = &lt;type 'list'&gt;</msg>
+<status status="PASS" endtime="20190529 12:21:31.763" starttime="20190529 12:21:31.762"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>"${dict_temp_type}" == "&lt;type 'list'&gt;"</arg>
+<arg>DictionaryUtilities.GetValueFromListOfCommonDictionaries</arg>
+<arg>${dict_temp}</arg>
+<arg>${key}</arg>
+<arg>ELSE</arg>
+<arg>get variable value</arg>
+<arg>${dict_temp['${key}']}</arg>
+</arguments>
+<assign>
+<var>${dict_temp}</var>
+</assign>
+<kw name="DictionaryUtilities.GetValueFromListOfCommonDictionaries" library="DictionaryUtilites">
+<doc>This is a private keyword and should not be used. This keyword is used by
+This keyword gets a specific key value in a list that has common dictionaries</doc>
+<arguments>
+<arg>${dict_temp}</arg>
+<arg>${key}</arg>
+</arguments>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${False}</arg>
+</arguments>
+<assign>
+<var>${matchFlag}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.764" level="INFO">${matchFlag} = False</msg>
+<status status="PASS" endtime="20190529 12:21:31.764" starttime="20190529 12:21:31.764"></status>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<arguments>
+<arg>${tempDictionary}</arg>
+</arguments>
+<assign>
+<var>${length}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.764" level="INFO">Length is 1</msg>
+<msg timestamp="20190529 12:21:31.764" level="INFO">${length} = 1</msg>
+<status status="PASS" endtime="20190529 12:21:31.764" starttime="20190529 12:21:31.764"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${None}</arg>
+</arguments>
+<assign>
+<var>${extractedValue}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.765" level="INFO">${extractedValue} = None</msg>
+<status status="PASS" endtime="20190529 12:21:31.765" starttime="20190529 12:21:31.764"></status>
+</kw>
+<kw name="Run Keyword And Return If" library="BuiltIn">
+<doc>Runs the specified keyword and returns from the enclosing user keyword.</doc>
+<arguments>
+<arg>"${key}" == "first"</arg>
+<arg>${tempDictionary[0]}</arg>
+</arguments>
+<status status="PASS" endtime="20190529 12:21:31.765" starttime="20190529 12:21:31.765"></status>
+</kw>
+<kw type="for" name="${index} IN RANGE [ 0 | ${length} ]">
+<kw type="foritem" name="${index} = 0">
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${tempDictionary[${index}]}</arg>
+</arguments>
+<assign>
+<var>${tempDict}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.766" level="INFO">${tempDict} = {u'dni': 783.37, u'wind_cdir': u'W', u'datetime': u'2019-05-29:02', u'city_name': u'Milsons Point', u'weather': {u'code': u'800', u'description': u'Clear sky', u'icon': u'c01d'}, u'country_code': u'AU...</msg>
+<status status="PASS" endtime="20190529 12:21:31.766" starttime="20190529 12:21:31.765"></status>
+</kw>
+<kw name="Get Variable Value" library="BuiltIn">
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<arguments>
+<arg>${tempDict["${key}"]}</arg>
+</arguments>
+<assign>
+<var>${extractedValue}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.766" level="INFO">${extractedValue} = 19.4</msg>
+<status status="PASS" endtime="20190529 12:21:31.766" starttime="20190529 12:21:31.766"></status>
+</kw>
+<kw name="Continue For Loop If" library="BuiltIn">
+<doc>Skips the current for loop iteration if the ``condition`` is true.</doc>
+<arguments>
+<arg>'${extractedValue}' == '${None}'</arg>
+</arguments>
+<status status="PASS" endtime="20190529 12:21:31.767" starttime="20190529 12:21:31.767"></status>
+</kw>
+<kw name="Run Keyword Unless" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments if ``condition`` is false.</doc>
+<arguments>
+<arg>"${extractedValue}" == "None"</arg>
+<arg>exit for loop</arg>
+</arguments>
+<kw name="Exit For Loop" library="BuiltIn">
+<doc>Stops executing the enclosing for loop.</doc>
+<msg timestamp="20190529 12:21:31.768" level="INFO">Exiting for loop altogether.</msg>
+<status status="PASS" endtime="20190529 12:21:31.768" starttime="20190529 12:21:31.768"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:31.768" starttime="20190529 12:21:31.767"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:31.768" starttime="20190529 12:21:31.765"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:31.768" starttime="20190529 12:21:31.765"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:31.768" starttime="20190529 12:21:31.763"></status>
+</kw>
+<msg timestamp="20190529 12:21:31.768" level="INFO">${dict_temp} = 19.4</msg>
+<status status="PASS" endtime="20190529 12:21:31.768" starttime="20190529 12:21:31.763"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:31.768" starttime="20190529 12:21:31.761"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:31.768" starttime="20190529 12:21:31.759"></status>
+</kw>
+<msg timestamp="20190529 12:21:31.768" level="INFO">${tempreture} = 19.4</msg>
+<status status="PASS" endtime="20190529 12:21:31.768" starttime="20190529 12:21:31.758"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Current Temprature: ${tempreture}</arg>
+</arguments>
+<msg timestamp="20190529 12:21:31.769" level="INFO">Current Temprature: 19.4</msg>
+<status status="PASS" endtime="20190529 12:21:31.769" starttime="20190529 12:21:31.769"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>data</arg>
+<arg>city_name</arg>
+</arguments>
+<assign>
+<var>${keypath_city}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.769" level="INFO">${keypath_city} = [u'data', u'city_name']</msg>
+<status status="PASS" endtime="20190529 12:21:31.769" starttime="20190529 12:21:31.769"></status>
+</kw>
+<kw name="DictionaryUtilities.getValueByKeyPath" library="DictionaryUtilites">
+<doc>This function takes 2 arguments - a dictionary object and a list of keys. The list of keys is read
+in a sequential manner to go down the path and find the key.</doc>
+<arguments>
+<arg>${response}</arg>
+<arg>${keypath_city}</arg>
+</arguments>
+<assign>
+<var>${response_city}</var>
+</assign>
+<kw name="Get Length" library="BuiltIn">
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<arguments>
+<arg>${list_key_path}</arg>
+</arguments>
+<assign>
+<var>${length}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.770" level="INFO">Length is 2</msg>
+<msg timestamp="20190529 12:21:31.770" level="INFO">${length} = 2</msg>
+<status status="PASS" endtime="20190529 12:21:31.770" starttime="20190529 12:21:31.770"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${dict_to_parse}</arg>
+</arguments>
+<assign>
+<var>${dict_temp}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.770" level="INFO">${dict_temp} = {u'count': 1, u'data': [{u'dni': 783.37, u'wind_cdir': u'W', u'datetime': u'2019-05-29:02', u'city_name': u'Milsons Point', u'weather': {u'code': u'800', u'description': u'Clear sky', u'icon': u'c01d'...</msg>
+<status status="PASS" endtime="20190529 12:21:31.770" starttime="20190529 12:21:31.770"></status>
+</kw>
+<kw type="for" name="${index} IN RANGE [ 0 | ${length} ]">
+<kw type="foritem" name="${index} = 0">
+<kw name="Get From List" library="Collections">
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<arguments>
+<arg>${list_key_path}</arg>
+<arg>${index}</arg>
+</arguments>
+<assign>
+<var>${key}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.771" level="INFO">${key} = data</msg>
+<status status="PASS" endtime="20190529 12:21:31.771" starttime="20190529 12:21:31.771"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>type(${dict_temp})</arg>
+</arguments>
+<assign>
+<var>${dict_temp_type}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.772" level="INFO">${dict_temp_type} = &lt;type 'dict'&gt;</msg>
+<status status="PASS" endtime="20190529 12:21:31.772" starttime="20190529 12:21:31.771"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>"${dict_temp_type}" == "&lt;type 'list'&gt;"</arg>
+<arg>DictionaryUtilities.GetValueFromListOfCommonDictionaries</arg>
+<arg>${dict_temp}</arg>
+<arg>${key}</arg>
+<arg>ELSE</arg>
+<arg>get variable value</arg>
+<arg>${dict_temp['${key}']}</arg>
+</arguments>
+<assign>
+<var>${dict_temp}</var>
+</assign>
+<kw name="Get Variable Value" library="BuiltIn">
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<arguments>
+<arg>${dict_temp['${key}']}</arg>
+</arguments>
+<status status="PASS" endtime="20190529 12:21:31.773" starttime="20190529 12:21:31.772"></status>
+</kw>
+<msg timestamp="20190529 12:21:31.773" level="INFO">${dict_temp} = [{u'dni': 783.37, u'wind_cdir': u'W', u'datetime': u'2019-05-29:02', u'city_name': u'Milsons Point', u'weather': {u'code': u'800', u'description': u'Clear sky', u'icon': u'c01d'}, u'country_code': u'A...</msg>
+<status status="PASS" endtime="20190529 12:21:31.773" starttime="20190529 12:21:31.772"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:31.773" starttime="20190529 12:21:31.771"></status>
+</kw>
+<kw type="foritem" name="${index} = 1">
+<kw name="Get From List" library="Collections">
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<arguments>
+<arg>${list_key_path}</arg>
+<arg>${index}</arg>
+</arguments>
+<assign>
+<var>${key}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.773" level="INFO">${key} = city_name</msg>
+<status status="PASS" endtime="20190529 12:21:31.773" starttime="20190529 12:21:31.773"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>type(${dict_temp})</arg>
+</arguments>
+<assign>
+<var>${dict_temp_type}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.774" level="INFO">${dict_temp_type} = &lt;type 'list'&gt;</msg>
+<status status="PASS" endtime="20190529 12:21:31.774" starttime="20190529 12:21:31.773"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>"${dict_temp_type}" == "&lt;type 'list'&gt;"</arg>
+<arg>DictionaryUtilities.GetValueFromListOfCommonDictionaries</arg>
+<arg>${dict_temp}</arg>
+<arg>${key}</arg>
+<arg>ELSE</arg>
+<arg>get variable value</arg>
+<arg>${dict_temp['${key}']}</arg>
+</arguments>
+<assign>
+<var>${dict_temp}</var>
+</assign>
+<kw name="DictionaryUtilities.GetValueFromListOfCommonDictionaries" library="DictionaryUtilites">
+<doc>This is a private keyword and should not be used. This keyword is used by
+This keyword gets a specific key value in a list that has common dictionaries</doc>
+<arguments>
+<arg>${dict_temp}</arg>
+<arg>${key}</arg>
+</arguments>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${False}</arg>
+</arguments>
+<assign>
+<var>${matchFlag}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.775" level="INFO">${matchFlag} = False</msg>
+<status status="PASS" endtime="20190529 12:21:31.775" starttime="20190529 12:21:31.775"></status>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<arguments>
+<arg>${tempDictionary}</arg>
+</arguments>
+<assign>
+<var>${length}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.775" level="INFO">Length is 1</msg>
+<msg timestamp="20190529 12:21:31.775" level="INFO">${length} = 1</msg>
+<status status="PASS" endtime="20190529 12:21:31.775" starttime="20190529 12:21:31.775"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${None}</arg>
+</arguments>
+<assign>
+<var>${extractedValue}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.776" level="INFO">${extractedValue} = None</msg>
+<status status="PASS" endtime="20190529 12:21:31.776" starttime="20190529 12:21:31.776"></status>
+</kw>
+<kw name="Run Keyword And Return If" library="BuiltIn">
+<doc>Runs the specified keyword and returns from the enclosing user keyword.</doc>
+<arguments>
+<arg>"${key}" == "first"</arg>
+<arg>${tempDictionary[0]}</arg>
+</arguments>
+<status status="PASS" endtime="20190529 12:21:31.776" starttime="20190529 12:21:31.776"></status>
+</kw>
+<kw type="for" name="${index} IN RANGE [ 0 | ${length} ]">
+<kw type="foritem" name="${index} = 0">
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${tempDictionary[${index}]}</arg>
+</arguments>
+<assign>
+<var>${tempDict}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.777" level="INFO">${tempDict} = {u'dni': 783.37, u'wind_cdir': u'W', u'datetime': u'2019-05-29:02', u'city_name': u'Milsons Point', u'weather': {u'code': u'800', u'description': u'Clear sky', u'icon': u'c01d'}, u'country_code': u'AU...</msg>
+<status status="PASS" endtime="20190529 12:21:31.777" starttime="20190529 12:21:31.777"></status>
+</kw>
+<kw name="Get Variable Value" library="BuiltIn">
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<arguments>
+<arg>${tempDict["${key}"]}</arg>
+</arguments>
+<assign>
+<var>${extractedValue}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.777" level="INFO">${extractedValue} = Milsons Point</msg>
+<status status="PASS" endtime="20190529 12:21:31.777" starttime="20190529 12:21:31.777"></status>
+</kw>
+<kw name="Continue For Loop If" library="BuiltIn">
+<doc>Skips the current for loop iteration if the ``condition`` is true.</doc>
+<arguments>
+<arg>'${extractedValue}' == '${None}'</arg>
+</arguments>
+<status status="PASS" endtime="20190529 12:21:31.778" starttime="20190529 12:21:31.778"></status>
+</kw>
+<kw name="Run Keyword Unless" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments if ``condition`` is false.</doc>
+<arguments>
+<arg>"${extractedValue}" == "None"</arg>
+<arg>exit for loop</arg>
+</arguments>
+<kw name="Exit For Loop" library="BuiltIn">
+<doc>Stops executing the enclosing for loop.</doc>
+<msg timestamp="20190529 12:21:31.778" level="INFO">Exiting for loop altogether.</msg>
+<status status="PASS" endtime="20190529 12:21:31.779" starttime="20190529 12:21:31.778"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:31.779" starttime="20190529 12:21:31.778"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:31.779" starttime="20190529 12:21:31.776"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:31.779" starttime="20190529 12:21:31.776"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:31.779" starttime="20190529 12:21:31.774"></status>
+</kw>
+<msg timestamp="20190529 12:21:31.779" level="INFO">${dict_temp} = Milsons Point</msg>
+<status status="PASS" endtime="20190529 12:21:31.779" starttime="20190529 12:21:31.774"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:31.779" starttime="20190529 12:21:31.773"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:31.779" starttime="20190529 12:21:31.770"></status>
+</kw>
+<msg timestamp="20190529 12:21:31.779" level="INFO">${response_city} = Milsons Point</msg>
+<status status="PASS" endtime="20190529 12:21:31.779" starttime="20190529 12:21:31.769"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>City: ${response_city}</arg>
+</arguments>
+<msg timestamp="20190529 12:21:31.779" level="INFO">City: Milsons Point</msg>
+<status status="PASS" endtime="20190529 12:21:31.780" starttime="20190529 12:21:31.779"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${request_city}</arg>
+<arg>${response_city}</arg>
+</arguments>
+<msg timestamp="20190529 12:21:31.780" level="DEBUG">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20190529 12:21:31.780" starttime="20190529 12:21:31.780"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:31.780" starttime="20190529 12:21:31.216"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:31.780" critical="yes" starttime="20190529 12:21:31.216"></status>
+</test>
+<test id="s1-t3" name="Get Current Temprature for Sydney based on Lat and Long">
+<kw name="Get Current Temprature">
+<arguments>
+<arg>${NONE}</arg>
+<arg>-33.86785</arg>
+<arg>151.20732</arg>
+<arg>${NONE}</arg>
+<arg>Sydney</arg>
+</arguments>
+<kw name="APIUtilities.Create API Session" library="APIUtilities">
+<doc>Creates a session to a supplied URL with headers and parameters</doc>
+<arguments>
+<arg>${ENVIRONMENT_WEATHERAPI_HOST}</arg>
+</arguments>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>${SESSION}</arg>
+<arg>${URL}</arg>
+<arg>verify=${verify}</arg>
+</arguments>
+<msg timestamp="20190529 12:21:31.782" level="INFO">Creating Session using : alias=APITEST, url=http://api.weatherbit.io/v2.0, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<msg timestamp="20190529 12:21:31.782" level="DEBUG">Creating session: APITEST</msg>
+<msg timestamp="20190529 12:21:31.782" level="DEBUG">Argument types are:
+&lt;type 'bool'&gt;</msg>
+<status status="PASS" endtime="20190529 12:21:31.782" starttime="20190529 12:21:31.782"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:31.782" starttime="20190529 12:21:31.781"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>"${latitude}"!="${NONE}"</arg>
+<arg>APIUtilities.Send Get Request and return dictionary</arg>
+<arg>/current?lat=${latitude}&amp;lon=${longitude}&amp;key=e367790c908944a882a863bd09e642b9</arg>
+<arg>ignoreResponseCode=True</arg>
+<arg>ELSE IF</arg>
+<arg>"${country}"!="${NONE}"</arg>
+<arg>APIUtilities.Send Get Request and return dictionary</arg>
+<arg>${ENVIRONMENT_WEATHERAPI_SERVICE_CURRENT}?postal_code=${postcode}&amp;country=${country}&amp;key=e367790c908944a882a863bd09e642b9</arg>
+<arg>ignoreResponseCode=True</arg>
+<arg>ELSE</arg>
+<arg>APIUtilities.Send Get Request and return dictionary</arg>
+<arg>${ENVIRONMENT_WEATHERAPI_SERVICE_CURRENT}?postal_code=${postcode}&amp;key=e367790c908944a882a863bd09e642b9</arg>
+<arg>ignoreResponseCode=True</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<kw name="APIUtilities.Send Get Request and return dictionary" library="APIUtilities">
+<doc>Sends a get request to the opened session</doc>
+<arguments>
+<arg>/current?lat=${latitude}&amp;lon=${longitude}&amp;key=e367790c908944a882a863bd09e642b9</arg>
+<arg>ignoreResponseCode=True</arg>
+</arguments>
+<kw name="APIUtilities.Send Rest Get Request" library="APIUtilities">
+<doc>Sends a get request to the opened session</doc>
+<arguments>
+<arg>${URI}</arg>
+<arg>${HEADERS}</arg>
+<arg>${PARAMS}</arg>
+<arg>${Result}</arg>
+<arg>${ignoreResponseCode}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${SESSION}</arg>
+<arg>${URI}</arg>
+<arg>headers=${HEADERS}</arg>
+<arg>params=${PARAMS}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20190529 12:21:31.786" level="DEBUG">Starting new HTTP connection (1): api.weatherbit.io:80</msg>
+<msg timestamp="20190529 12:21:32.317" level="DEBUG">http://api.weatherbit.io:80 "GET /v2.0/current?lat=-33.86785&amp;lon=151.20732&amp;key=e367790c908944a882a863bd09e642b9 HTTP/1.1" 200 None</msg>
+<msg timestamp="20190529 12:21:32.318" level="INFO">Get Request using : alias=APITEST, uri=/current?lat=-33.86785&amp;lon=151.20732&amp;key=e367790c908944a882a863bd09e642b9, headers=None json=None</msg>
+<msg timestamp="20190529 12:21:32.318" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20190529 12:21:32.318" starttime="20190529 12:21:31.784"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>json: resp.content:: ${resp.content}</arg>
+<arg>level=DEBUG</arg>
+<arg>console=yes</arg>
+</arguments>
+<msg timestamp="20190529 12:21:32.319" level="DEBUG">json: resp.content:: {"data":[{"wind_cdir":"W","rh":43,"pod":"d","pres":990.1,"timezone":"Australia\/Sydney","ob_time":"2019-05-29 02:00","country_code":"AU","clouds":0,"ts":1559095200,"solar_rad":539.5,"state_code":"02","city_name":"Sydney","wind_spd":1.34,"last_ob_time":"2019-05-29T02:00:00","wind_cdir_full":"west","slp":998.2,"vis":10,"lon":151.21,"uv":6.21917,"datetime":"2019-05-29:02","h_angle":18,"dewpt":6.5,"aqi":29,"dhi":97.2,"wind_dir":277,"elev_angle":34.46,"ghi":539.52,"precip":null,"sunrise":"20:49","lat":-33.87,"weather":{"icon":"c01d","code":"800","description":"Clear sky"},"sunset":"06:55","temp":19.4,"dni":792.92,"station":"D5330","app_temp":18.6}],"count":1}
+</msg>
+<status status="PASS" endtime="20190529 12:21:32.319" starttime="20190529 12:21:32.318"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${ignoreResponseCode}' == 'False'</arg>
+<arg>should be equal as strings</arg>
+<arg>${resp.status_code}</arg>
+<arg>${Result}</arg>
+</arguments>
+<status status="PASS" endtime="20190529 12:21:32.319" starttime="20190529 12:21:32.319"></status>
+</kw>
+<kw name="To Json" library="RequestsLibrary">
+<doc>Convert a string to a JSON object</doc>
+<arguments>
+<arg>${resp.content}</arg>
+<arg>pretty_print=True</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20190529 12:21:32.320" level="INFO">To JSON using : content={"data":[{"wind_cdir":"W","rh":43,"pod":"d","pres":990.1,"timezone":"Australia\/Sydney","ob_time":"2019-05-29 02:00","country_code":"AU","clouds":0,"ts":1559095200,"solar_rad":539.5,"state_code":"02","city_name":"Sydney","wind_spd":1.34,"last_ob_time":"2019-05-29T02:00:00","wind_cdir_full":"west","slp":998.2,"vis":10,"lon":151.21,"uv":6.21917,"datetime":"2019-05-29:02","h_angle":18,"dewpt":6.5,"aqi":29,"dhi":97.2,"wind_dir":277,"elev_angle":34.46,"ghi":539.52,"precip":null,"sunrise":"20:49","lat":-33.87,"weather":{"icon":"c01d","code":"800","description":"Clear sky"},"sunset":"06:55","temp":19.4,"dni":792.92,"station":"D5330","app_temp":18.6}],"count":1}
+ </msg>
+<msg timestamp="20190529 12:21:32.320" level="INFO">To JSON using : pretty_print=True </msg>
+<msg timestamp="20190529 12:21:32.320" level="INFO">${output} = {
+    "count": 1,
+    "data": [
+        {
+            "app_temp": 18.6,
+            "aqi": 29,
+            "city_name": "Sydney",
+            "clouds": 0,
+            "country_code": "AU",
+           ...</msg>
+<status status="PASS" endtime="20190529 12:21:32.320" starttime="20190529 12:21:32.319"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${output}</arg>
+</arguments>
+<msg timestamp="20190529 12:21:32.320" level="INFO">{
+    "count": 1,
+    "data": [
+        {
+            "app_temp": 18.6,
+            "aqi": 29,
+            "city_name": "Sydney",
+            "clouds": 0,
+            "country_code": "AU",
+            "datetime": "2019-05-29:02",
+            "dewpt": 6.5,
+            "dhi": 97.2,
+            "dni": 792.92,
+            "elev_angle": 34.46,
+            "ghi": 539.52,
+            "h_angle": 18,
+            "last_ob_time": "2019-05-29T02:00:00",
+            "lat": -33.87,
+            "lon": 151.21,
+            "ob_time": "2019-05-29 02:00",
+            "pod": "d",
+            "precip": null,
+            "pres": 990.1,
+            "rh": 43,
+            "slp": 998.2,
+            "solar_rad": 539.5,
+            "state_code": "02",
+            "station": "D5330",
+            "sunrise": "20:49",
+            "sunset": "06:55",
+            "temp": 19.4,
+            "timezone": "Australia/Sydney",
+            "ts": 1559095200,
+            "uv": 6.21917,
+            "vis": 10,
+            "weather": {
+                "code": "800",
+                "description": "Clear sky",
+                "icon": "c01d"
+            },
+            "wind_cdir": "W",
+            "wind_cdir_full": "west",
+            "wind_dir": 277,
+            "wind_spd": 1.34
+        }
+    ]
+}</msg>
+<status status="PASS" endtime="20190529 12:21:32.320" starttime="20190529 12:21:32.320"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${json}</arg>
+<arg>${output}</arg>
+</arguments>
+<msg timestamp="20190529 12:21:32.321" level="INFO">${json} = {
+    "count": 1,
+    "data": [
+        {
+            "app_temp": 18.6,
+            "aqi": 29,
+            "city_name": "Sydney",
+            "clouds": 0,
+            "country_code": "AU",
+           ...</msg>
+<status status="PASS" endtime="20190529 12:21:32.321" starttime="20190529 12:21:32.320"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>json.loads(r'''${json}''')</arg>
+<arg>json</arg>
+</arguments>
+<assign>
+<var>${RespDict}</var>
+</assign>
+<msg timestamp="20190529 12:21:32.322" level="INFO">${RespDict} = {u'count': 1, u'data': [{u'dni': 792.92, u'wind_cdir': u'W', u'datetime': u'2019-05-29:02', u'city_name': u'Sydney', u'weather': {u'code': u'800', u'description': u'Clear sky', u'icon': u'c01d'}, u'co...</msg>
+<status status="PASS" endtime="20190529 12:21:32.322" starttime="20190529 12:21:32.321"></status>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<arguments>
+<arg>${json}</arg>
+</arguments>
+<assign>
+<var>${ReturnLength}</var>
+</assign>
+<msg timestamp="20190529 12:21:32.322" level="INFO">Length is 1268</msg>
+<msg timestamp="20190529 12:21:32.322" level="INFO">${ReturnLength} = 1268</msg>
+<status status="PASS" endtime="20190529 12:21:32.322" starttime="20190529 12:21:32.322"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>${ReturnLength} &gt; 2</arg>
+</arguments>
+<assign>
+<var>${CheckLength}</var>
+</assign>
+<msg timestamp="20190529 12:21:32.322" level="INFO">${CheckLength} = True</msg>
+<status status="PASS" endtime="20190529 12:21:32.323" starttime="20190529 12:21:32.322"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${CheckLength}</arg>
+</arguments>
+<status status="PASS" endtime="20190529 12:21:32.323" starttime="20190529 12:21:32.323"></status>
+</kw>
+<msg timestamp="20190529 12:21:32.323" level="INFO">${response} = {u'count': 1, u'data': [{u'dni': 792.92, u'wind_cdir': u'W', u'datetime': u'2019-05-29:02', u'city_name': u'Sydney', u'weather': {u'code': u'800', u'description': u'Clear sky', u'icon': u'c01d'}, u'co...</msg>
+<status status="PASS" endtime="20190529 12:21:32.323" starttime="20190529 12:21:31.784"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:32.323" starttime="20190529 12:21:31.783"></status>
+</kw>
+<msg timestamp="20190529 12:21:32.323" level="INFO">${response} = {u'count': 1, u'data': [{u'dni': 792.92, u'wind_cdir': u'W', u'datetime': u'2019-05-29:02', u'city_name': u'Sydney', u'weather': {u'code': u'800', u'description': u'Clear sky', u'icon': u'c01d'}, u'co...</msg>
+<status status="PASS" endtime="20190529 12:21:32.323" starttime="20190529 12:21:31.783"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>data</arg>
+<arg>temp</arg>
+</arguments>
+<assign>
+<var>${keypath_tempreture}</var>
+</assign>
+<msg timestamp="20190529 12:21:32.324" level="INFO">${keypath_tempreture} = [u'data', u'temp']</msg>
+<status status="PASS" endtime="20190529 12:21:32.324" starttime="20190529 12:21:32.323"></status>
+</kw>
+<kw name="DictionaryUtilities.getValueByKeyPath" library="DictionaryUtilites">
+<doc>This function takes 2 arguments - a dictionary object and a list of keys. The list of keys is read
+in a sequential manner to go down the path and find the key.</doc>
+<arguments>
+<arg>${response}</arg>
+<arg>${keypath_tempreture}</arg>
+</arguments>
+<assign>
+<var>${tempreture}</var>
+</assign>
+<kw name="Get Length" library="BuiltIn">
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<arguments>
+<arg>${list_key_path}</arg>
+</arguments>
+<assign>
+<var>${length}</var>
+</assign>
+<msg timestamp="20190529 12:21:32.324" level="INFO">Length is 2</msg>
+<msg timestamp="20190529 12:21:32.325" level="INFO">${length} = 2</msg>
+<status status="PASS" endtime="20190529 12:21:32.325" starttime="20190529 12:21:32.324"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${dict_to_parse}</arg>
+</arguments>
+<assign>
+<var>${dict_temp}</var>
+</assign>
+<msg timestamp="20190529 12:21:32.325" level="INFO">${dict_temp} = {u'count': 1, u'data': [{u'dni': 792.92, u'wind_cdir': u'W', u'datetime': u'2019-05-29:02', u'city_name': u'Sydney', u'weather': {u'code': u'800', u'description': u'Clear sky', u'icon': u'c01d'}, u'co...</msg>
+<status status="PASS" endtime="20190529 12:21:32.325" starttime="20190529 12:21:32.325"></status>
+</kw>
+<kw type="for" name="${index} IN RANGE [ 0 | ${length} ]">
+<kw type="foritem" name="${index} = 0">
+<kw name="Get From List" library="Collections">
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<arguments>
+<arg>${list_key_path}</arg>
+<arg>${index}</arg>
+</arguments>
+<assign>
+<var>${key}</var>
+</assign>
+<msg timestamp="20190529 12:21:32.326" level="INFO">${key} = data</msg>
+<status status="PASS" endtime="20190529 12:21:32.326" starttime="20190529 12:21:32.325"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>type(${dict_temp})</arg>
+</arguments>
+<assign>
+<var>${dict_temp_type}</var>
+</assign>
+<msg timestamp="20190529 12:21:32.326" level="INFO">${dict_temp_type} = &lt;type 'dict'&gt;</msg>
+<status status="PASS" endtime="20190529 12:21:32.326" starttime="20190529 12:21:32.326"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>"${dict_temp_type}" == "&lt;type 'list'&gt;"</arg>
+<arg>DictionaryUtilities.GetValueFromListOfCommonDictionaries</arg>
+<arg>${dict_temp}</arg>
+<arg>${key}</arg>
+<arg>ELSE</arg>
+<arg>get variable value</arg>
+<arg>${dict_temp['${key}']}</arg>
+</arguments>
+<assign>
+<var>${dict_temp}</var>
+</assign>
+<kw name="Get Variable Value" library="BuiltIn">
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<arguments>
+<arg>${dict_temp['${key}']}</arg>
+</arguments>
+<status status="PASS" endtime="20190529 12:21:32.327" starttime="20190529 12:21:32.327"></status>
+</kw>
+<msg timestamp="20190529 12:21:32.328" level="INFO">${dict_temp} = [{u'dni': 792.92, u'wind_cdir': u'W', u'datetime': u'2019-05-29:02', u'city_name': u'Sydney', u'weather': {u'code': u'800', u'description': u'Clear sky', u'icon': u'c01d'}, u'country_code': u'AU', u't...</msg>
+<status status="PASS" endtime="20190529 12:21:32.328" starttime="20190529 12:21:32.327"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:32.328" starttime="20190529 12:21:32.325"></status>
+</kw>
+<kw type="foritem" name="${index} = 1">
+<kw name="Get From List" library="Collections">
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<arguments>
+<arg>${list_key_path}</arg>
+<arg>${index}</arg>
+</arguments>
+<assign>
+<var>${key}</var>
+</assign>
+<msg timestamp="20190529 12:21:32.328" level="INFO">${key} = temp</msg>
+<status status="PASS" endtime="20190529 12:21:32.328" starttime="20190529 12:21:32.328"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>type(${dict_temp})</arg>
+</arguments>
+<assign>
+<var>${dict_temp_type}</var>
+</assign>
+<msg timestamp="20190529 12:21:32.329" level="INFO">${dict_temp_type} = &lt;type 'list'&gt;</msg>
+<status status="PASS" endtime="20190529 12:21:32.329" starttime="20190529 12:21:32.328"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>"${dict_temp_type}" == "&lt;type 'list'&gt;"</arg>
+<arg>DictionaryUtilities.GetValueFromListOfCommonDictionaries</arg>
+<arg>${dict_temp}</arg>
+<arg>${key}</arg>
+<arg>ELSE</arg>
+<arg>get variable value</arg>
+<arg>${dict_temp['${key}']}</arg>
+</arguments>
+<assign>
+<var>${dict_temp}</var>
+</assign>
+<kw name="DictionaryUtilities.GetValueFromListOfCommonDictionaries" library="DictionaryUtilites">
+<doc>This is a private keyword and should not be used. This keyword is used by
+This keyword gets a specific key value in a list that has common dictionaries</doc>
+<arguments>
+<arg>${dict_temp}</arg>
+<arg>${key}</arg>
+</arguments>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${False}</arg>
+</arguments>
+<assign>
+<var>${matchFlag}</var>
+</assign>
+<msg timestamp="20190529 12:21:32.330" level="INFO">${matchFlag} = False</msg>
+<status status="PASS" endtime="20190529 12:21:32.330" starttime="20190529 12:21:32.330"></status>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<arguments>
+<arg>${tempDictionary}</arg>
+</arguments>
+<assign>
+<var>${length}</var>
+</assign>
+<msg timestamp="20190529 12:21:32.330" level="INFO">Length is 1</msg>
+<msg timestamp="20190529 12:21:32.330" level="INFO">${length} = 1</msg>
+<status status="PASS" endtime="20190529 12:21:32.330" starttime="20190529 12:21:32.330"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${None}</arg>
+</arguments>
+<assign>
+<var>${extractedValue}</var>
+</assign>
+<msg timestamp="20190529 12:21:32.331" level="INFO">${extractedValue} = None</msg>
+<status status="PASS" endtime="20190529 12:21:32.331" starttime="20190529 12:21:32.330"></status>
+</kw>
+<kw name="Run Keyword And Return If" library="BuiltIn">
+<doc>Runs the specified keyword and returns from the enclosing user keyword.</doc>
+<arguments>
+<arg>"${key}" == "first"</arg>
+<arg>${tempDictionary[0]}</arg>
+</arguments>
+<status status="PASS" endtime="20190529 12:21:32.331" starttime="20190529 12:21:32.331"></status>
+</kw>
+<kw type="for" name="${index} IN RANGE [ 0 | ${length} ]">
+<kw type="foritem" name="${index} = 0">
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${tempDictionary[${index}]}</arg>
+</arguments>
+<assign>
+<var>${tempDict}</var>
+</assign>
+<msg timestamp="20190529 12:21:32.332" level="INFO">${tempDict} = {u'dni': 792.92, u'wind_cdir': u'W', u'datetime': u'2019-05-29:02', u'city_name': u'Sydney', u'weather': {u'code': u'800', u'description': u'Clear sky', u'icon': u'c01d'}, u'country_code': u'AU', u'ti...</msg>
+<status status="PASS" endtime="20190529 12:21:32.332" starttime="20190529 12:21:32.332"></status>
+</kw>
+<kw name="Get Variable Value" library="BuiltIn">
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<arguments>
+<arg>${tempDict["${key}"]}</arg>
+</arguments>
+<assign>
+<var>${extractedValue}</var>
+</assign>
+<msg timestamp="20190529 12:21:32.333" level="INFO">${extractedValue} = 19.4</msg>
+<status status="PASS" endtime="20190529 12:21:32.333" starttime="20190529 12:21:32.332"></status>
+</kw>
+<kw name="Continue For Loop If" library="BuiltIn">
+<doc>Skips the current for loop iteration if the ``condition`` is true.</doc>
+<arguments>
+<arg>'${extractedValue}' == '${None}'</arg>
+</arguments>
+<status status="PASS" endtime="20190529 12:21:32.333" starttime="20190529 12:21:32.333"></status>
+</kw>
+<kw name="Run Keyword Unless" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments if ``condition`` is false.</doc>
+<arguments>
+<arg>"${extractedValue}" == "None"</arg>
+<arg>exit for loop</arg>
+</arguments>
+<kw name="Exit For Loop" library="BuiltIn">
+<doc>Stops executing the enclosing for loop.</doc>
+<msg timestamp="20190529 12:21:32.334" level="INFO">Exiting for loop altogether.</msg>
+<status status="PASS" endtime="20190529 12:21:32.334" starttime="20190529 12:21:32.333"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:32.334" starttime="20190529 12:21:32.333"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:32.334" starttime="20190529 12:21:32.331"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:32.334" starttime="20190529 12:21:32.331"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:32.334" starttime="20190529 12:21:32.329"></status>
+</kw>
+<msg timestamp="20190529 12:21:32.334" level="INFO">${dict_temp} = 19.4</msg>
+<status status="PASS" endtime="20190529 12:21:32.334" starttime="20190529 12:21:32.329"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:32.334" starttime="20190529 12:21:32.328"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:32.334" starttime="20190529 12:21:32.325"></status>
+</kw>
+<msg timestamp="20190529 12:21:32.334" level="INFO">${tempreture} = 19.4</msg>
+<status status="PASS" endtime="20190529 12:21:32.334" starttime="20190529 12:21:32.324"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Current Temprature: ${tempreture}</arg>
+</arguments>
+<msg timestamp="20190529 12:21:32.335" level="INFO">Current Temprature: 19.4</msg>
+<status status="PASS" endtime="20190529 12:21:32.335" starttime="20190529 12:21:32.334"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>data</arg>
+<arg>city_name</arg>
+</arguments>
+<assign>
+<var>${keypath_city}</var>
+</assign>
+<msg timestamp="20190529 12:21:32.335" level="INFO">${keypath_city} = [u'data', u'city_name']</msg>
+<status status="PASS" endtime="20190529 12:21:32.335" starttime="20190529 12:21:32.335"></status>
+</kw>
+<kw name="DictionaryUtilities.getValueByKeyPath" library="DictionaryUtilites">
+<doc>This function takes 2 arguments - a dictionary object and a list of keys. The list of keys is read
+in a sequential manner to go down the path and find the key.</doc>
+<arguments>
+<arg>${response}</arg>
+<arg>${keypath_city}</arg>
+</arguments>
+<assign>
+<var>${response_city}</var>
+</assign>
+<kw name="Get Length" library="BuiltIn">
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<arguments>
+<arg>${list_key_path}</arg>
+</arguments>
+<assign>
+<var>${length}</var>
+</assign>
+<msg timestamp="20190529 12:21:32.336" level="INFO">Length is 2</msg>
+<msg timestamp="20190529 12:21:32.336" level="INFO">${length} = 2</msg>
+<status status="PASS" endtime="20190529 12:21:32.336" starttime="20190529 12:21:32.335"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${dict_to_parse}</arg>
+</arguments>
+<assign>
+<var>${dict_temp}</var>
+</assign>
+<msg timestamp="20190529 12:21:32.336" level="INFO">${dict_temp} = {u'count': 1, u'data': [{u'dni': 792.92, u'wind_cdir': u'W', u'datetime': u'2019-05-29:02', u'city_name': u'Sydney', u'weather': {u'code': u'800', u'description': u'Clear sky', u'icon': u'c01d'}, u'co...</msg>
+<status status="PASS" endtime="20190529 12:21:32.336" starttime="20190529 12:21:32.336"></status>
+</kw>
+<kw type="for" name="${index} IN RANGE [ 0 | ${length} ]">
+<kw type="foritem" name="${index} = 0">
+<kw name="Get From List" library="Collections">
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<arguments>
+<arg>${list_key_path}</arg>
+<arg>${index}</arg>
+</arguments>
+<assign>
+<var>${key}</var>
+</assign>
+<msg timestamp="20190529 12:21:32.337" level="INFO">${key} = data</msg>
+<status status="PASS" endtime="20190529 12:21:32.337" starttime="20190529 12:21:32.337"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>type(${dict_temp})</arg>
+</arguments>
+<assign>
+<var>${dict_temp_type}</var>
+</assign>
+<msg timestamp="20190529 12:21:32.338" level="INFO">${dict_temp_type} = &lt;type 'dict'&gt;</msg>
+<status status="PASS" endtime="20190529 12:21:32.338" starttime="20190529 12:21:32.337"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>"${dict_temp_type}" == "&lt;type 'list'&gt;"</arg>
+<arg>DictionaryUtilities.GetValueFromListOfCommonDictionaries</arg>
+<arg>${dict_temp}</arg>
+<arg>${key}</arg>
+<arg>ELSE</arg>
+<arg>get variable value</arg>
+<arg>${dict_temp['${key}']}</arg>
+</arguments>
+<assign>
+<var>${dict_temp}</var>
+</assign>
+<kw name="Get Variable Value" library="BuiltIn">
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<arguments>
+<arg>${dict_temp['${key}']}</arg>
+</arguments>
+<status status="PASS" endtime="20190529 12:21:32.339" starttime="20190529 12:21:32.338"></status>
+</kw>
+<msg timestamp="20190529 12:21:32.339" level="INFO">${dict_temp} = [{u'dni': 792.92, u'wind_cdir': u'W', u'datetime': u'2019-05-29:02', u'city_name': u'Sydney', u'weather': {u'code': u'800', u'description': u'Clear sky', u'icon': u'c01d'}, u'country_code': u'AU', u't...</msg>
+<status status="PASS" endtime="20190529 12:21:32.339" starttime="20190529 12:21:32.338"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:32.339" starttime="20190529 12:21:32.336"></status>
+</kw>
+<kw type="foritem" name="${index} = 1">
+<kw name="Get From List" library="Collections">
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<arguments>
+<arg>${list_key_path}</arg>
+<arg>${index}</arg>
+</arguments>
+<assign>
+<var>${key}</var>
+</assign>
+<msg timestamp="20190529 12:21:32.339" level="INFO">${key} = city_name</msg>
+<status status="PASS" endtime="20190529 12:21:32.339" starttime="20190529 12:21:32.339"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>type(${dict_temp})</arg>
+</arguments>
+<assign>
+<var>${dict_temp_type}</var>
+</assign>
+<msg timestamp="20190529 12:21:32.340" level="INFO">${dict_temp_type} = &lt;type 'list'&gt;</msg>
+<status status="PASS" endtime="20190529 12:21:32.340" starttime="20190529 12:21:32.339"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>"${dict_temp_type}" == "&lt;type 'list'&gt;"</arg>
+<arg>DictionaryUtilities.GetValueFromListOfCommonDictionaries</arg>
+<arg>${dict_temp}</arg>
+<arg>${key}</arg>
+<arg>ELSE</arg>
+<arg>get variable value</arg>
+<arg>${dict_temp['${key}']}</arg>
+</arguments>
+<assign>
+<var>${dict_temp}</var>
+</assign>
+<kw name="DictionaryUtilities.GetValueFromListOfCommonDictionaries" library="DictionaryUtilites">
+<doc>This is a private keyword and should not be used. This keyword is used by
+This keyword gets a specific key value in a list that has common dictionaries</doc>
+<arguments>
+<arg>${dict_temp}</arg>
+<arg>${key}</arg>
+</arguments>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${False}</arg>
+</arguments>
+<assign>
+<var>${matchFlag}</var>
+</assign>
+<msg timestamp="20190529 12:21:32.341" level="INFO">${matchFlag} = False</msg>
+<status status="PASS" endtime="20190529 12:21:32.341" starttime="20190529 12:21:32.341"></status>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<arguments>
+<arg>${tempDictionary}</arg>
+</arguments>
+<assign>
+<var>${length}</var>
+</assign>
+<msg timestamp="20190529 12:21:32.341" level="INFO">Length is 1</msg>
+<msg timestamp="20190529 12:21:32.341" level="INFO">${length} = 1</msg>
+<status status="PASS" endtime="20190529 12:21:32.341" starttime="20190529 12:21:32.341"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${None}</arg>
+</arguments>
+<assign>
+<var>${extractedValue}</var>
+</assign>
+<msg timestamp="20190529 12:21:32.342" level="INFO">${extractedValue} = None</msg>
+<status status="PASS" endtime="20190529 12:21:32.342" starttime="20190529 12:21:32.342"></status>
+</kw>
+<kw name="Run Keyword And Return If" library="BuiltIn">
+<doc>Runs the specified keyword and returns from the enclosing user keyword.</doc>
+<arguments>
+<arg>"${key}" == "first"</arg>
+<arg>${tempDictionary[0]}</arg>
+</arguments>
+<status status="PASS" endtime="20190529 12:21:32.342" starttime="20190529 12:21:32.342"></status>
+</kw>
+<kw type="for" name="${index} IN RANGE [ 0 | ${length} ]">
+<kw type="foritem" name="${index} = 0">
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${tempDictionary[${index}]}</arg>
+</arguments>
+<assign>
+<var>${tempDict}</var>
+</assign>
+<msg timestamp="20190529 12:21:32.343" level="INFO">${tempDict} = {u'dni': 792.92, u'wind_cdir': u'W', u'datetime': u'2019-05-29:02', u'city_name': u'Sydney', u'weather': {u'code': u'800', u'description': u'Clear sky', u'icon': u'c01d'}, u'country_code': u'AU', u'ti...</msg>
+<status status="PASS" endtime="20190529 12:21:32.343" starttime="20190529 12:21:32.343"></status>
+</kw>
+<kw name="Get Variable Value" library="BuiltIn">
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<arguments>
+<arg>${tempDict["${key}"]}</arg>
+</arguments>
+<assign>
+<var>${extractedValue}</var>
+</assign>
+<msg timestamp="20190529 12:21:32.344" level="INFO">${extractedValue} = Sydney</msg>
+<status status="PASS" endtime="20190529 12:21:32.344" starttime="20190529 12:21:32.343"></status>
+</kw>
+<kw name="Continue For Loop If" library="BuiltIn">
+<doc>Skips the current for loop iteration if the ``condition`` is true.</doc>
+<arguments>
+<arg>'${extractedValue}' == '${None}'</arg>
+</arguments>
+<status status="PASS" endtime="20190529 12:21:32.344" starttime="20190529 12:21:32.344"></status>
+</kw>
+<kw name="Run Keyword Unless" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments if ``condition`` is false.</doc>
+<arguments>
+<arg>"${extractedValue}" == "None"</arg>
+<arg>exit for loop</arg>
+</arguments>
+<kw name="Exit For Loop" library="BuiltIn">
+<doc>Stops executing the enclosing for loop.</doc>
+<msg timestamp="20190529 12:21:32.345" level="INFO">Exiting for loop altogether.</msg>
+<status status="PASS" endtime="20190529 12:21:32.345" starttime="20190529 12:21:32.344"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:32.345" starttime="20190529 12:21:32.344"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:32.345" starttime="20190529 12:21:32.342"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:32.345" starttime="20190529 12:21:32.342"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:32.345" starttime="20190529 12:21:32.340"></status>
+</kw>
+<msg timestamp="20190529 12:21:32.345" level="INFO">${dict_temp} = Sydney</msg>
+<status status="PASS" endtime="20190529 12:21:32.345" starttime="20190529 12:21:32.340"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:32.345" starttime="20190529 12:21:32.339"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:32.345" starttime="20190529 12:21:32.336"></status>
+</kw>
+<msg timestamp="20190529 12:21:32.345" level="INFO">${response_city} = Sydney</msg>
+<status status="PASS" endtime="20190529 12:21:32.345" starttime="20190529 12:21:32.335"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>City: ${response_city}</arg>
+</arguments>
+<msg timestamp="20190529 12:21:32.346" level="INFO">City: Sydney</msg>
+<status status="PASS" endtime="20190529 12:21:32.346" starttime="20190529 12:21:32.345"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${request_city}</arg>
+<arg>${response_city}</arg>
+</arguments>
+<msg timestamp="20190529 12:21:32.346" level="DEBUG">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20190529 12:21:32.346" starttime="20190529 12:21:32.346"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:32.346" starttime="20190529 12:21:31.781"></status>
+</kw>
+<status status="PASS" endtime="20190529 12:21:32.346" critical="yes" starttime="20190529 12:21:31.780"></status>
+</test>
+<status status="FAIL" endtime="20190529 12:21:32.347" starttime="20190529 12:21:29.766"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="1" pass="2">Critical Tests</stat>
+<stat fail="1" pass="2">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="1" id="s1" name="Weather-Api" pass="2">Weather-Api</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

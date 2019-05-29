@@ -1,7 +1,6 @@
 *** Settings ***
 Library  Collections
 Library  String
-Library  Core/Libraries/CommonUtilities.py
 
 *** Keywords ***
 DictionaryUtilities.getValueByKeyPath
